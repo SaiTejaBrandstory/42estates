@@ -92,7 +92,63 @@
         }
 
         .hyphen-list li::marker {
-            content: "- "; 
+            content: "- ";
+        }
+        .ps-compare-sec.spb-50 {
+            padding-bottom: 3rem !important;
+        }
+        .psd-address:before{
+            content: "";
+        }
+        .psd-address {
+            padding-left: 0 !important;
+        }
+        .corner-logo {
+            position: absolute;
+            left: 20px;
+            z-index: 9999;
+        }
+        @media (max-width: 768px) {
+            .ps-compare-sec.spb-50 {
+                padding-bottom: 3rem !important;
+            }
+            .ps-pg-item-text {
+                font-size: 14px !important;
+            }
+        }
+        .ps-construction-gallery-sec .image-wrapper {
+                height: auto;
+        }
+        .site--form .form-control, .site--form .form-select {
+            padding: 0.5rem 0  !important;
+        }
+        @media only screen and (max-width: 991px) {
+            .ps-construction-gallery-sec .image-wrapper {
+                height: auto;
+            }
+        }
+        @media (max-width: 768px) {
+            .corner-logo {
+                left: 12px;
+            }
+            .corner-logo img {
+                max-height: 60px;
+            }
+            .ps-project-gallery-row .col-4,
+            .ps-project-gallery-row .ps-pg-col1,
+            .ps-project-gallery-row .ps-pg-col2,
+            .ps-project-gallery-row .ps-pg-col3 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .ps-project-gallery-row .ps-pg-item {
+                margin-bottom: 1rem;
+            }
+            .ps-pg-item img {
+                height: 350px;
+                object-fit: cover;
+                object-position: bottom;
+            }
         }
     </style>       
 </head>
@@ -103,80 +159,14 @@
     <noscript><iframe data-lazyloaded="1" src="about:blank"
             data-litespeed-src="https://www.googletagmanager.com/ns.html?id=GTM-KKVGJ25" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
+    <a href="/" class="corner-logo d-inline-flex align-items-center">
+        <img src="images/42estates-logo.svg" alt="42 Estates" class="img-fluid" />
+    </a>
     <div class="wrapper">
-        <!-- <header class="header sticky-top">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-5 col-md-4 col-lg-2 col-xl-3">
-                        <div class="header-logo">
-                            <a href="#">
-                                <img data-lazyloaded="1"
-                                    src="images/42estates-logo.svg"
-                                    data-src="images/42estates-logo.svg"
-                                    class="img-fluid header-logo-42" alt="Between the Greens">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-7 col-md-8 col-lg-10 col-xl-9 header-menu">
-                        <div id="mega-menu-wrap-header-menu" class="mega-menu-wrap">
-                            <div class="mega-menu-toggle">
-                                <div class="mega-toggle-blocks-left"></div>
-                                <div class="mega-toggle-blocks-center"></div>
-                                <div class="mega-toggle-blocks-right">
-                                    <div class='mega-toggle-block mega-menu-toggle-animated-block mega-toggle-block-0'
-                                        id='mega-toggle-block-0'><button aria-label="Toggle Menu"
-                                            class="mega-toggle-animated mega-toggle-animated-slider" type="button"
-                                            aria-expanded="false">
-                                            <span class="mega-toggle-animated-box">
-                                                <span class="mega-toggle-animated-inner"></span>
-                                            </span>
-                                        </button></div>
-                                </div>
-                            </div>
-                            <ul id="mega-menu-header-menu"
-                                class="mega-menu max-mega-menu mega-menu-horizontal mega-no-js"
-                                data-event="hover_intent" data-effect="fade_up" data-effect-speed="200"
-                                data-effect-mobile="disabled" data-effect-speed-mobile="0"
-                                data-mobile-force-width="body" data-second-click="go" data-document-click="collapse"
-                                data-vertical-behaviour="standard" data-breakpoint="1024" data-unbind="true"
-                                data-mobile-state="collapse_all" data-mobile-direction="vertical"
-                                data-hover-intent-timeout="300" data-hover-intent-interval="100">
-                                <li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-720"
-                                    id="mega-menu-item-720"><a class="mega-menu-link"
-                                        href="https://www.adarshdevelopers.com/project/residential/"
-                                        tabindex="0">Residential</a></li>
-                                <li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-719"
-                                    id="mega-menu-item-719"><a class="mega-menu-link"
-                                        href="https://www.adarshdevelopers.com/project/commercial/"
-                                        tabindex="0">Commercial</a></li>
-                                <li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-718"
-                                    id="mega-menu-item-718"><a class="mega-menu-link"
-                                        href="https://www.adarshdevelopers.com/project/hospitality/"
-                                        tabindex="0">Hospitality</a></li>
-                                <li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-1411"
-                                    id="mega-menu-item-1411"><a class="mega-menu-link"
-                                        href="https://www.adarshdevelopers.com/about-us/" tabindex="0">Our Story</a>
-                                </li>
-                                <li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-716"
-                                    id="mega-menu-item-716"><a class="mega-menu-link"
-                                        href="https://www.adarshdevelopers.com/news/" tabindex="0">News</a></li>
-                                <li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-792"
-                                    id="mega-menu-item-792"><a class="mega-menu-link"
-                                        href="https://www.adarshdevelopers.com/blog/" tabindex="0">Blog</a></li>
-                                <li class="mega-contact-menu mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-714 contact-menu"
-                                    id="mega-menu-item-714"><a class="mega-menu-link"
-                                        href="https://www.adarshdevelopers.com/contact-us/" tabindex="0">Contact us</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header> -->
         <main id="content" class="neve-main">
             <div class="sticky--sidebar d-md-block d-none desktop-side_bar">
                 <div class="stick-sb-item d-none">
-                    <a href="https://wa.me/6364921355" target="_blank"><img data-lazyloaded="1"
+                    <a href="https://wa.me/8880804242" target="_blank"><img data-lazyloaded="1"
                             src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
                             data-src="https://www.adarshdevelopers.com/wp-content/themes/neve-child/images/projects/sb-icon1.svg"
                             class="img-fluid" alt="icon">
@@ -202,7 +192,7 @@
                     </a>
                 </div>
                 <div class="stick-sb-item d-none">
-                    <a href="tel:+916364921355"><img data-lazyloaded="1"
+                    <a href="tel:+918880804242"><img data-lazyloaded="1"
                             src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
                             data-src="https://www.adarshdevelopers.com/wp-content/themes/neve-child/images/projects/sb-icon3.svg"
                             class="img-fluid" alt="icon">
@@ -275,7 +265,7 @@ autofillBrochureInModal()</script>
                     </a>
                 </div>
                 <div class="stick-sb-item">
-                    <a href="tel:+916364921355"><img data-lazyloaded="1"
+                    <a href="tel:+918880804242"><img data-lazyloaded="1"
                             src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
                             data-src="https://www.adarshdevelopers.com/wp-content/themes/neve-child/images/projects/sb-icon3.svg"
                             class="img-fluid" alt="icon">
@@ -301,7 +291,7 @@ autofillBrochureInModal()</script>
                     </a>
                 </div>
                 <div class="stick-sb-item border-0 d-none">
-                    <a href="https://wa.me/6364921355" target="_blank"><img data-lazyloaded="1"
+                    <a href="https://wa.me/8880804242" target="_blank"><img data-lazyloaded="1"
                             src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
                             data-src="https://www.adarshdevelopers.com/wp-content/themes/neve-child/images/projects/sb-icon1.svg"
                             class="img-fluid" alt="icon">
@@ -366,7 +356,7 @@ autofillBrochureInModal1()</script>
                         <div class="ps-description-title"><span>About</span></div>
                         <div class="ps-description">
                             <h1 class="prj-name">Between The Greens</h1>
-                            <div class="psd-address">Chikkanekkundi, off Whitefield, Varthur, Bengaluru, Karnataka 560087</div>
+                            <div class="psd-address"><span class="me-1" style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#698FCA" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a5.53 5.53 0 0 0-5.5 5.5c0 3.04 3.38 7.1 5.04 8.94a.74.74 0 0 0 1.12 0C10.12 12.6 13.5 8.54 13.5 5.5A5.53 5.53 0 0 0 8 0Zm0 8.25A2.75 2.75 0 1 1 10.75 5.5 2.75 2.75 0 0 1 8 8.25Z"/></svg></span>Chikkanekkundi, off Whitefield, Varthur, Bengaluru, Karnataka 560087</div>
                             <p>Set across 9 acres off Varthur Road, Between The Greens by 42 Estates and SPD Developers is home to 147 premium 4 BHK villas built around light, air, and open greens. Every villa opens to courtyards and backyards that blend sunlight, air, and greenery into daily life. With nature all around, each day feels lighter, quieter, and deeply connected. It’s a home that truly lives Between The Greens. </p>
                             <!-- <div class="collapse" id="txtExpand">
                                 <p>This premium high-rise features spacious 2 and 3-bedroom apartments, complemented by
@@ -1377,15 +1367,15 @@ document.addEventListener('DOMContentLiteSpeedLoaded',autofillInterestedProperty
                         <div class="d-lg-block d-md-flex justify-content-between">
                             <div class="ftr-contact">
                                 <div class="ftr-col-titl mb-2">For sales queries:</div>
-                                <div class="ftr-phone mb-2"><a href="tel:+916364921355">+91 63649 21355</a></div>
+                                <div class="ftr-phone mb-2"><a href="tel:+918880804242">+91 88808 04242</a></div>
                                 <div class="ftr-email"><a
                                         href="mailto:contact@42estates.com">contact@42estates.com</a></div>
                             </div>
                             <div class="ftr-address">
                                 <div class="ftr-col-titl mb-2">Registered Address:</div>
-                                <p class="mb-0">Adarsh Group, <br>
-                                    2/4, Langford Gardens, Richmond Town,<br class="d-xl-block d-lg-none d-block">
-                                    Bengaluru, Karnataka - 560025</p>
+                                <p class="mb-0">Forty Two Estates,<br>
+                                    No.775, 42 High Street, 100 ft road,<br class="d-xl-block d-lg-none d-block">
+                                    HAL 2nd Stage, Indiranagar, Bangalore</p>
                             </div>
                         </div>
                     </div>
