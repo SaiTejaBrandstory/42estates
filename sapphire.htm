@@ -175,6 +175,29 @@
                 object-position: bottom;
             }
         }
+        .get-directions-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        @media (max-width: 768px) {
+            .get-directions-btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+        @media (max-width: 576px) {
+            .get-directions-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+                width: fit-content;
+                max-width: 280px;
+            }
+        }
     </style>       
 </head>
 
@@ -1123,6 +1146,11 @@ autofillBrochureInModal1()</script>
                                 data-litespeed-src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7774.967159029752!2d77.739431!3d13.004848!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae11de3f66e9e3%3A0xa271db8d9529c6a3!2sSAPPHIRE%20-%20VILLAS!5e0!3m2!1sen!2sin!4v1763026326216!5m2!1sen!2sin"
                                 width="100%" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="col-12 text-center mt-4">
+                            <a href="https://maps.app.goo.gl/Mdk8vSKkkvuCuPzE6" target="_blank" rel="noopener noreferrer" class="btn bg-black text-white text-uppercase get-directions-btn">
+                                Get Directions
+                            </a>
                         </div>
                     </div>
                 </div>
