@@ -102,6 +102,8 @@
         }
         .psd-address {
             padding-left: 0 !important;
+            font-weight: bold;
+            color: #000;
         }
         .corner-logo {
             position: absolute;
@@ -136,9 +138,12 @@
             color: #fff;
             text-decoration: none;
         }
+        .sticky--sidebar-mobile, .sticky--sidebar {
+            display: none !important;
+        }
         @media (max-width: 768px) {
             .footer-band {
-                padding-bottom: 80px;
+                /* padding-bottom: 80px; */
             }
         }
         @media only screen and (max-width: 991px) {
@@ -167,6 +172,29 @@
                 height: 350px;
                 object-fit: cover;
                 object-position: bottom;
+            }
+        }
+        .get-directions-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        @media (max-width: 768px) {
+            .get-directions-btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+        @media (max-width: 576px) {
+            .get-directions-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+                width: 90%;
+                max-width: 280px;
             }
         }
     </style>       
@@ -375,8 +403,8 @@ autofillBrochureInModal1()</script>
                         <div class="ps-description-title"><span>About</span></div>
                         <div class="ps-description">
                             <h1 class="prj-name">Between The Greens</h1>
-                            <div class="psd-address"><span class="me-1" style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#698FCA" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a5.53 5.53 0 0 0-5.5 5.5c0 3.04 3.38 7.1 5.04 8.94a.74.74 0 0 0 1.12 0C10.12 12.6 13.5 8.54 13.5 5.5A5.53 5.53 0 0 0 8 0Zm0 8.25A2.75 2.75 0 1 1 10.75 5.5 2.75 2.75 0 0 1 8 8.25Z"/></svg></span>Chikkanekkundi, off Whitefield, Varthur, Bengaluru, Karnataka 560087</div>
-                            <p>Set across 9 acres off Varthur Road, Between The Greens by 42 Estates and SPD Developers is home to 147 premium 4 BHK villas built around light, air, and open greens. Every villa opens to courtyards and backyards that blend sunlight, air, and greenery into daily life. With nature all around, each day feels lighter, quieter, and deeply connected. It’s a home that truly lives Between The Greens. </p>
+                            <div class="psd-address"><span class="me-1" style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#16a34a" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a5.53 5.53 0 0 0-5.5 5.5c0 3.04 3.38 7.1 5.04 8.94a.74.74 0 0 0 1.12 0C10.12 12.6 13.5 8.54 13.5 5.5A5.53 5.53 0 0 0 8 0Zm0 8.25A2.75 2.75 0 1 1 10.75 5.5 2.75 2.75 0 0 1 8 8.25Z"/></svg></span>Chikkanekkundi, off Whitefield, Varthur, Bengaluru, Karnataka 560087</div>
+                            <p>Set across <strong>9 acres</strong> off Varthur Road, <strong>Between The Greens</strong> by <strong>42 Estates</strong> and SPD Developers is home to <strong>147 premium 4 BHK villas</strong> built around light, air, and open greens. Every villa opens to courtyards and backyards that blend sunlight, air, and greenery into daily life. With nature all around, each day feels lighter, quieter, and deeply connected. It’s a home that truly lives <br> Between The Greens. </p>
                             <!-- <div class="collapse" id="txtExpand">
                                 <p>This premium high-rise features spacious 2 and 3-bedroom apartments, complemented by
                                     a luxurious 52,000 sq. ft. clubhouse. <a
@@ -424,11 +452,11 @@ autofillBrochureInModal1()</script>
                             <div class="row gx-1 gx-md-3 ps-project-gallery-row">
                                 <div class="col-4 ps-pg-col2">
                                     <div class="ps-pg-item">
-                                        <a href="images/villa-view-5.jpg"
+                                        <a href="images/villa-view-3.jpg"
                                             data-fancybox="gallery">
                                             <img data-lazyloaded="1"
                                                 src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                                data-src="images/villa-view-5-s.png"
+                                                data-src="images/villa-view-3-s.png"
                                                 class="img-fluid" alt="img">
                                             <div class="ps-pg-item-text">Outdoors</div>
                                             <div class="overlay">
@@ -467,13 +495,13 @@ autofillBrochureInModal1()</script>
                                 </div>
                                 <div class="col-4 ps-pg-col3">
                                     <div class="ps-pg-item">
-                                        <a href="images/villa-view-4.jpg"
+                                        <a href="images/top-view.jpg"
                                             data-fancybox="gallery">
                                             <img data-lazyloaded="1"
                                                 src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                                data-src="images/villa-view-4-s.png"
+                                                data-src="images/top-view-s.png"
                                                 class="img-fluid" alt="img">
-                                            <div class="ps-pg-item-text">Outdoors</div>
+                                            <div class="ps-pg-item-text">Amenities</div>
                                             <div class="overlay">
                                                 <span class="plus-symbol">+</span>
                                             </div>
@@ -486,13 +514,13 @@ autofillBrochureInModal1()</script>
                                 <a href="images/villa-view-2.jpg"
                                     data-fancybox="gallery">
                                 </a>
-                                <a href="images/villa-view-3.jpg"
+                                <a href="images/villa-view-5.jpg"
                                     data-fancybox="gallery">
                                 </a>
                                 <a href="images/villa-view-6.jpg"
                                     data-fancybox="gallery">
                                 </a>
-                                <a href="images/top-view.jpg"
+                                <a href="images/villa-view-4.jpg"
                                     data-fancybox="gallery">
                                 </a>
                             </div>
@@ -807,7 +835,7 @@ autofillBrochureInModal1()</script>
                                                             Plan</strong></a></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row" class="ps-0">RERA No.</th>
+                                                <th scope="row" class="ps-0">RERA Number</th>
                                                 <td colspan="2"><strong></strong>
                                                     PRM/KA/RERA/1251/308/PR/120225/007494<br>
                                                     <!-- <strong>Phase II:</strong> PRM/KA/RERA/1251/446/PR/200923/006275 -->
@@ -996,7 +1024,7 @@ autofillBrochureInModal1()</script>
                             </div>
                         </div>
                     </div>
-                    <p class="mb-0 text-end fw-bold txt-16">...and 25+ more amenities</p>
+                    <p class="mb-0 text-end fw-bold txt-16">...and 20+ more amenities</p>
                 </div>
             </section>
            
@@ -1233,6 +1261,11 @@ autofillBrochureInModal1()</script>
                                 data-litespeed-src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7595.033572825608!2d77.76765700000001!3d12.929741!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae0dfa759bab97%3A0x4f59b5196d8d31cf!2sBetween%20the%20Greens%20villas!5e1!3m2!1sen!2sin!4v1762855451287!5m2!1sen!2sin"
                                 width="100%" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="col-12 text-center mt-4">
+                            <a href="https://maps.app.goo.gl/fLRicc3eMRtxmdHVA" target="_blank" rel="noopener noreferrer" class="btn bg-black text-white text-uppercase get-directions-btn">
+                                Get Directions
+                            </a>
                         </div>
                     </div>
                 </div>
