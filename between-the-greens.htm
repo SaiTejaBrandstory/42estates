@@ -268,6 +268,43 @@
             border-color: #0f471b;
         }
 
+        .mobile-cta-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1050;
+            background: #fff;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+            padding: 10px 12px;
+        }
+
+        .mobile-cta-bar .mobile-cta-btn {
+            flex: 1;
+            border: 1px solid #135B22;
+            border-radius: 6px;
+            padding: 10px 8px;
+            font-size: 13px;
+            color: #135B22;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-cta-bar .mobile-cta-btn.btn-fill {
+            background: #135B22;
+            color: #fff;
+        }
+
+        .mobile-cta-bar .mobile-cta-btn:hover {
+            background: #135B22;
+            color: #fff;
+        }
+
         @media (max-width: 768px) {
             .site-header .container {
                 flex-direction: column;
@@ -281,12 +318,6 @@
 
             .site-header .d-flex {
                 width: 100%;
-                flex-wrap: wrap;
-            }
-
-            .site-header .header-btn {
-                width: 100%;
-                justify-content: center;
             }
         }
     </style>
@@ -300,7 +331,7 @@
             <a href="/" class="d-inline-flex align-items-center">
                 <img src="images/btw-greens-logo.webp" alt="42 Estates" style="height: 48px;" class="img-fluid">
             </a>
-            <div class="d-flex gap-2">
+            <div class="d-none d-md-flex gap-2 header-actions">
                 <a class="header-btn" href="tel:+918880804242">
                 <img src="images/phone-btwgreens.svg" alt="42 Estates" style="height: 20px;" class="img-fluid">
                 8880804242
@@ -315,6 +346,21 @@
             </div>
         </div>
     </header>
+    <div class="mobile-cta-bar d-md-none">
+        <div class="d-flex gap-2">
+            <a class="mobile-cta-btn" href="tel:+918880804242">
+                <img src="images/phone-btwgreens.svg" alt="Call" style="height: 18px;" class="img-fluid">
+                8880804242
+            </a>
+            <a class="mobile-cta-btn" href="https://wa.me/8880804242" target="_blank" rel="noopener">
+                <img src="images/whtsp-btwgreens-icon.svg" alt="WhatsApp" style="height: 18px;" class="img-fluid">
+                WhatsApp
+            </a>
+            <a class="mobile-cta-btn btn-fill" href="#" data-bs-toggle="modal" data-bs-target="#leadModal">
+                Download
+            </a>
+        </div>
+    </div>
     <noscript><iframe data-lazyloaded="1" src="about:blank"
             data-litespeed-src="https://www.googletagmanager.com/ns.html?id=GTM-KKVGJ25" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
