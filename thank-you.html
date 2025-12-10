@@ -33,33 +33,131 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/swiper.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/centrale-sans-regular" rel="stylesheet">
 
     <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-        }
+       html,
+body {
+    margin: 0;
+    font-family: 'Centrale Sans Regular', sans-serif;
+    background: radial-gradient(circle at 20% 20%, #e8f5e9, #f7fafc 45%, #eef7f1);
+    min-height: 100vh;
+}
 
-        .full-height {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f8f9fa;
-        }
+/* HEADER */
+.simple-header {
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.06);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .thank-you-box {
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-            background: #fff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
+.simple-header img {
+    height: 56px;
+    max-width: 80%;
+}
+
+@media (max-width: 576px) {
+    .simple-header img {
+        height: 44px;
+    }
+}
+
+/* LAYOUT */
+.full-height {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+/* THANK YOU BOX */
+.thank-you-box {
+    padding: 40px 32px;
+    border-radius: 16px;
+    text-align: center;
+    width: 100%;
+    max-width: 520px;
+    background: #fff;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e7f1ea;
+}
+
+@media (max-width: 576px) {
+    .thank-you-box {
+        padding: 32px 20px;
+    }
+}
+
+.thank-you-box h1 {
+    color: #1f7a34;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    font-size: 2rem;
+}
+
+@media (max-width: 576px) {
+    .thank-you-box h1 {
+        font-size: 1.75rem;
+    }
+}
+
+.thank-you-box p {
+    color: #4a5568;
+    font-size: 1.125rem;
+}
+
+@media (max-width: 576px) {
+    .thank-you-box p {
+        font-size: 1rem;
+    }
+}
+
+/* CTA ROW */
+.cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* BUTTONS */
+.btn-pill {
+    border-radius: 999px;
+    padding: 12px 20px;
+    font-weight: 600;
+    min-width: 160px;
+    border: 1px solid #135B22;
+    background: #135B22;
+    color: #fff;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-pill:hover {
+    background: #0f471b;
+    border-color: #0f471b;
+    color: #fff;
+}
+
+@media (max-width: 480px) {
+    .btn-pill {
+        min-width: 140px;
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
+
     </style>
     <!-- Event snippet for Thank You Page BS conversion page -->
     <!-- <script>
@@ -70,12 +168,19 @@
 
 <body>
 
+    <header class="simple-header text-center">
+        <img src="images/btw-greens-logo.webp" alt="Between The Greens" class="img-fluid">
+    </header>
+
     <div class="full-height">
         <div class="thank-you-box">
-            <h1 class="text-success mb-3">Thank You</h1>
+            <h1 class="mb-3">Thank You</h1>
             <p class="mb-4 fs-5">Your enquiry has been submitted successfully. Our team will get in touch with you soon.
             </p>
-            <a href="https://betweenthegreens.42estates.com/" class="btn btn-success">Back to Home</a>
+            <div class="cta-row">
+                <a href="https://betweenthegreens.42estates.com/" class="btn btn-pill">Back to Home</a>
+                <a href="./images/Between_The_Greens_- E-Brochure.pdf" target="_blank" class="btn btn-pill" download>Download Brochure</a>
+            </div>
         </div>
     </div>
 
