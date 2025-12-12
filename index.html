@@ -223,6 +223,10 @@
                 padding: 12px 30px;
                 font-size: 16px;
             }
+
+            .footer-band {
+                padding: 20px 12px 5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -380,7 +384,7 @@
                 WhatsApp
             </a>
             <a class="mobile-cta-btn btn-fill" href="#" data-bs-toggle="modal" data-bs-target="#leadModal">
-                Download
+                Brochure
             </a>
         </div>
     </div>
@@ -1067,15 +1071,13 @@ autofillBrochureInModal1()</script>
                                                         4 BHK </span></th>
                                                 <td><strong>Super Built-up Area</strong> <br> 3450 - 5450 sq. ft. </td>
                                                 <td style="vertical-align: middle;">
-                                                    <a href="btg-floor-plan.pdf" class="text-blue" rel="noopener"
-                                                        download="btg-floor-plan.pdf"><strong>View
+                                                    <a href="#" class="text-blue" data-bs-toggle="modal" data-bs-target="#FloorPlanModal" data-floorplan-file="btg-floor-plan.pdf"><strong>View
                                                             Floor Plan</strong></a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="ps-0 text-nowrap">Master Plan</th>
-                                                <td colspan="3"><a href="images/btg-master-plan.png" class="text-blue"
-                                                        rel="noopener" download="btg-master-plan.png"><strong>View
+                                                <td colspan="3"><a href="#" class="text-blue" data-bs-toggle="modal" data-bs-target="#MasterPlanModal" data-masterplan-file="images/btg-master-plan.png"><strong>View
                                                             Master
                                                             Plan</strong></a></td>
                                             </tr>
@@ -1557,10 +1559,10 @@ autofillBrochureInModal1()</script>
             <!-- modal section start -->
             <!-- Modal Trigger (Hidden) -->
             <button id="openModalBtn" type="button" class="btn btn-primary d-none" data-bs-toggle="modal"
-                data-bs-target="#leadModal"></button>
+                data-bs-target="#autoPopupModal"></button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="leadModal" tabindex="-1" aria-labelledby="leadModalLabel" aria-hidden="true">
+            <!-- Auto Popup Modal (8 sec delay) -->
+            <div class="modal fade" id="autoPopupModal" tabindex="-1" aria-labelledby="autoPopupModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
 
@@ -1573,6 +1575,81 @@ autofillBrochureInModal1()</script>
                             <div class="ps-enquire-form site--form">
                                 <small class="text-uppercase">Enquire</small>
                                 <p class="txt-20 mt-2">Fill up the form below and we will get in touch with you</p>
+                                <div class="row d-none">
+                                    <div class="col-12">
+                                        <div class="p-3 border rounded mb-3 bg-light text-center">
+                                            <div class="fw-bold mb-1" style="font-size: 14px;">RERA & Approvals</div>
+                                            <div class="small text-muted mb-1" style="font-size: 12px;">BDA Approved
+                                            </div>
+                                            <div class="small mb-0" style="font-size: 10px;font-weight: 600;">
+                                                PRM/KA/RERA/1251/308/PR/120225/007494</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form class="single-prj-form"
+                                    action="https://devopspro.agency/2025/sapphire-villa/submit_demo.php" method="POST">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" id="f_name_auto" name="f_name" class="form-control"
+                                                placeholder="First Name*" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" id="l_name_auto" name="l_name" class="form-control"
+                                                placeholder="Last Name*" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" id="email_auto" name="email" class="form-control"
+                                                placeholder="Email Address*" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="tel" id="phonefax_auto" name="phonefax" class="form-control"
+                                                placeholder="Phone Number*" required>
+                                        </div>
+                                        <div class="col-md-12 mb-3"><textarea id="notes_auto" name="notes"
+                                                class="form-control" placeholder="Type your message here"
+                                                rows="6"></textarea></div>
+                                        <div class="col-12">
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="checkbox" id="consent_auto"
+                                                    name="consent" required>
+                                                <label class="form-check-label" for="consent_auto" style="font-size: 10px;">
+                                                    By submitting your contact details through any form on this website,
+                                                    you consent to being
+                                                    contacted by 42 Estates via phone, email, WhatsApp, or SMS. This
+                                                    includes communication
+                                                    regarding project updates, promotional offers, and other relevant
+                                                    information. Your contact
+                                                    information will remain confidential and will be used solely for the
+                                                    purposes stated above.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn bg-black text-white text-uppercase">Submit
+                                                enquiry</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brochure Button Modal -->
+            <div class="modal fade" id="leadModal" tabindex="-1" aria-labelledby="leadModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <!-- Close button -->
+                        <button type="button" class="btn-close ms-auto mt-2 me-2" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+
+                        <div class="modal-body" style="padding: 5px 0px 0px 0px;">
+
+                            <div class="ps-enquire-form site--form">
+                                <p class="txt-20 mt-2">Fill up the form below and download the brochure</p>
                                 <div class="row d-none">
                                     <div class="col-12">
                                         <div class="p-3 border rounded mb-3 bg-light text-center">
@@ -1636,12 +1713,41 @@ autofillBrochureInModal1()</script>
             </div>
 
             <script>
-                // Trigger modal 5 seconds after page load
+                // Trigger modal 8 seconds after page load, but only if no other modal is currently open
                 document.addEventListener("DOMContentLoaded", () => {
+                    // Set timeout for delay modal
                     setTimeout(() => {
-                        const trigger = document.getElementById("openModalBtn");
-                        if (trigger) trigger.click();
-                    }, 5000);
+                        // Check if any modal is currently open at this moment
+                        const openModals = document.querySelectorAll('.modal.show');
+                        const hasBackdrop = document.querySelector('.modal-backdrop');
+                        
+                        // Only open delay modal if no other modal is currently open
+                        if (openModals.length === 0 && !hasBackdrop) {
+                            const trigger = document.getElementById("openModalBtn");
+                            if (trigger) {
+                                trigger.click();
+                            }
+                        }
+                    }, 8000);
+                    
+                    // Fix backdrop issue when modals are closed
+                    // Listen for all modal hide events
+                    document.querySelectorAll('.modal').forEach(function(modal) {
+                        modal.addEventListener('hidden.bs.modal', function() {
+                            // Remove any lingering backdrops
+                            const backdrops = document.querySelectorAll('.modal-backdrop');
+                            backdrops.forEach(function(backdrop) {
+                                backdrop.remove();
+                            });
+                            // Remove modal-open class from body if no modals are open
+                            const remainingModals = document.querySelectorAll('.modal.show');
+                            if (remainingModals.length === 0) {
+                                document.body.classList.remove('modal-open');
+                                document.body.style.overflow = '';
+                                document.body.style.paddingRight = '';
+                            }
+                        });
+                    });
                 });
             </script>
 
@@ -1691,7 +1797,7 @@ if(pdfUrlInput){pdfUrlInput.value=fppdfUrl}})})}
 handleFloorPlanModal()})</script>
             <div class="modal fade master-modal" id="MasterPlanModal" tabindex="-1" aria-labelledby="MasterModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
                             <small class="modal-title popup-ttl" id="modalTitle">Download Master Plan</small>
@@ -1721,8 +1827,23 @@ handleFloorPlanModal()})</script>
                                         <div class="col-md-12 mb-3"><textarea id="notes" name="notes"
                                                 class="form-control" placeholder="Type your message here"
                                                 rows="6"></textarea></div>
-                                        <input type="hidden" name="pdf_url" id="pdfUrl"
-                                            value="https://www.adarshdevelopers.com/pdf/masterplans/masterplan_park-heights.pdf">
+                                        <input type="hidden" name="pdf_url" id="masterPlanFileUrl" value="">
+                                        <div class="col-12">
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="checkbox" id="consent_master"
+                                                    name="consent" required>
+                                                <label class="form-check-label" for="consent_master" style="font-size: 10px;">
+                                                    By submitting your contact details through any form on this website,
+                                                    you consent to being
+                                                    contacted by 42 Estates via phone, email, WhatsApp, or SMS. This
+                                                    includes communication
+                                                    regarding project updates, promotional offers, and other relevant
+                                                    information. Your contact
+                                                    information will remain confidential and will be used solely for the
+                                                    purposes stated above.
+                                                </label>
+                                            </div>
+                                        </div>
                                         <div class="col-md-12">
                                             <button type="submit" class="btn bg-black text-white text-uppercase">Submit
                                                 & Download</button>
@@ -1948,7 +2069,7 @@ document.addEventListener('DOMContentLiteSpeedLoaded',autofillInterestedProperty
     </div>
     <div class="modal fade floor-modal" id="FloorPlanModal" tabindex="-1" aria-labelledby="EnquireModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <small class="modal-title popup-ttl" id="modalTitle">Download Floor Plans</small>
@@ -1977,7 +2098,23 @@ document.addEventListener('DOMContentLiteSpeedLoaded',autofillInterestedProperty
                                 </div>
                                 <div class="col-md-12 mb-3"><textarea id="notes" name="notes" class="form-control"
                                         placeholder="Type your message here" rows="6"></textarea></div>
-                                <input type="hidden" name="fpdf_url" id="fpdfUrl" value="">
+                                <input type="hidden" name="fpdf_url" id="floorPlanFileUrl" value="">
+                                <div class="col-12">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="consent_floor"
+                                            name="consent" required>
+                                        <label class="form-check-label" for="consent_floor" style="font-size: 10px;">
+                                            By submitting your contact details through any form on this website,
+                                            you consent to being
+                                            contacted by 42 Estates via phone, email, WhatsApp, or SMS. This
+                                            includes communication
+                                            regarding project updates, promotional offers, and other relevant
+                                            information. Your contact
+                                            information will remain confidential and will be used solely for the
+                                            purposes stated above.
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <button type="submit" class="btn bg-black text-white text-uppercase">Submit &
                                         Download</button>
@@ -2066,6 +2203,199 @@ document.addEventListener('DOMContentLiteSpeedLoaded',autofillInterestedProperty
     <script type="litespeed/javascript">function autofillPropertyInModal(){var floorPlanModal=document.querySelector('.floor-modal');if(floorPlanModal){floorPlanModal.addEventListener('shown.bs.modal',function(){var pageHeading1=document.querySelector('h1.prj-name')?document.querySelector('h1.prj-name').innerHTML:'Enter Property Name';var interestedField1=document.querySelector('.fp-prj[name="project"]');if(interestedField1){interestedField1.value=pageHeading1}})}}
 function masterPropertyInModal(){var masterModal=document.querySelector('.master-modal');if(masterModal){masterModal.addEventListener('shown.bs.modal',function(){var pagehd=document.querySelector('h1.prj-name')?document.querySelector('h1.prj-name').innerHTML:'Enter Property Name';var prptyname=document.querySelector('.mp-prj[name="project"]');if(prptyname){prptyname.value=pagehd}})}}
 autofillPropertyInModal();masterPropertyInModal()</script>
+    <script type="litespeed/javascript">
+        function initPlanModals() {
+            // Handle Master Plan Modal
+            const masterPlanModal = document.getElementById('MasterPlanModal');
+            const masterPlanForm = document.querySelector('.master-prj-form');
+            const masterPlanFileUrl = document.getElementById('masterPlanFileUrl');
+            
+            // Set file URL when link is clicked and prevent default
+            document.querySelectorAll('[data-masterplan-file]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const fileUrl = this.getAttribute('data-masterplan-file');
+                    if (masterPlanFileUrl) {
+                        masterPlanFileUrl.value = fileUrl;
+                    }
+                });
+            });
+            
+            // Handle form submission
+            if (masterPlanForm) {
+                masterPlanForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validate form
+                    if (!masterPlanForm.checkValidity()) {
+                        masterPlanForm.reportValidity();
+                        return;
+                    }
+                    
+                    // Get form data
+                    const formData = new FormData(masterPlanForm);
+                    const fileUrl = masterPlanFileUrl.value;
+                    
+                    if (!fileUrl) {
+                        alert('Please select a file to download');
+                        return;
+                    }
+                    
+                    // Disable submit button to prevent double submission
+                    const submitBtn = masterPlanForm.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.textContent;
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Submitting...';
+                    
+                    // Submit form data
+                    fetch('https://devopspro.agency/2025/sapphire-villa/submit_demo.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        // Trigger download on successful submission
+                        const link = document.createElement('a');
+                        link.href = fileUrl;
+                        link.download = fileUrl.split('/').pop();
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        // Close modal
+                        if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                            const modal = bootstrap.Modal.getInstance(masterPlanModal);
+                            if (modal) {
+                                modal.hide();
+                            }
+                        } else {
+                            $(masterPlanModal).modal('hide');
+                        }
+                        
+                        // Reset form
+                        masterPlanForm.reset();
+                        
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error submitting the form. Please try again.');
+                        
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                    });
+                });
+            }
+            
+            // Handle Floor Plan Modal
+            const floorPlanModal = document.getElementById('FloorPlanModal');
+            const floorPlanForm = document.getElementById('floorplan-form');
+            const floorPlanFileUrl = document.getElementById('floorPlanFileUrl');
+            
+            // Set file URL when link is clicked and prevent default
+            document.querySelectorAll('[data-floorplan-file]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const fileUrl = this.getAttribute('data-floorplan-file');
+                    if (floorPlanFileUrl) {
+                        floorPlanFileUrl.value = fileUrl;
+                    }
+                });
+            });
+            
+            // Handle form submission
+            if (floorPlanForm) {
+                floorPlanForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validate form
+                    if (!floorPlanForm.checkValidity()) {
+                        floorPlanForm.reportValidity();
+                        return;
+                    }
+                    
+                    // Get form data
+                    const formData = new FormData(floorPlanForm);
+                    const fileUrl = floorPlanFileUrl.value;
+                    
+                    if (!fileUrl) {
+                        alert('Please select a file to download');
+                        return;
+                    }
+                    
+                    // Disable submit button to prevent double submission
+                    const submitBtn = floorPlanForm.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.textContent;
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Submitting...';
+                    
+                    // Submit form data
+                    fetch('https://devopspro.agency/2025/sapphire-villa/submit_demo.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        // Trigger download on successful submission
+                        const link = document.createElement('a');
+                        link.href = fileUrl;
+                        link.download = fileUrl.split('/').pop();
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        // Close modal
+                        if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                            const modal = bootstrap.Modal.getInstance(floorPlanModal);
+                            if (modal) {
+                                modal.hide();
+                            }
+                        } else {
+                            $(floorPlanModal).modal('hide');
+                        }
+                        
+                        // Reset form
+                        floorPlanForm.reset();
+                        
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error submitting the form. Please try again.');
+                        
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                    });
+                });
+            }
+        }
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPlanModals);
+        } else {
+            initPlanModals();
+        }
+        
+        // Also initialize when LiteSpeed loads
+        document.addEventListener('DOMContentLiteSpeedLoaded', initPlanModals);
+    </script>
     <script
         type="litespeed/javascript">$(document).ready(function(){const gallerySettings={loop:!0,buttons:["zoom","fullScreen","slideShow","thumbs","close"],protect:!0,beforeShow:function(instance,current){let galleryClass;const galleryType=instance.$trigger.data('fancybox');if(galleryType==='gallery'){galleryClass='.hidden-gallery-item'}else if(galleryType==='construction-gallery'){galleryClass='.hidden-cgallery-item'}else if(galleryType==='construction-gallery2'){galleryClass='.hidden-cgallery-item2'}
 if(galleryClass){$(galleryClass).css('display','block')}}};$('[data-fancybox]').each(function(){const galleryType=$(this).data('fancybox');if(galleryType==='gallery'||galleryType==='construction-gallery'||galleryType==='construction-gallery2'){$(this).fancybox(gallerySettings)}})})</script>
