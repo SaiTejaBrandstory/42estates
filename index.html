@@ -677,7 +677,7 @@ autofillBrochureInModal1()</script>
                     </div>
                     <div class="row justify-content-center align-items-center" style="width: 100%;">
                         <div class="col-2 d-md-block d-none"></div>
-                        <div class="col-md-6 col-12 position-relative">
+                        <div class="col-md-6 col-12 position-relative d-flex justify-content-center">
                             <style>
                                 .offer-banner {
                                     position: relative;
@@ -686,8 +686,8 @@ autofillBrochureInModal1()</script>
                                     color: #fff;
                                     overflow: hidden;
                                     background: rgba(91, 91, 91, 0.342);
-                                    backdrop-filter: blur(22px);
-                                    -webkit-backdrop-filter: blur(22px);
+                                    /* backdrop-filter: blur(22px);
+                                    -webkit-backdrop-filter: blur(22px); */
                                     border-radius: 12px;
                                     border: 1.5px solid #00000040;
                                 }
@@ -700,13 +700,29 @@ autofillBrochureInModal1()</script>
                                     color: white;
                                 }
 
+                                .ps-description-sec .ps-description-inner {
+                                    margin-top: -55px;
+                                }
+
                                 @media (max-width:768px) {
                                     .offer-banner h2 {
-                                        font-size: 18px;
+                                        font-size: 14px;
                                         font-weight: 600;
                                         line-height: 1.4;
                                         margin: 0;
                                         color: white;
+                                    }
+
+                                    .offer-banner {
+                                        padding: 8px 20px;
+                                        /* backdrop-filter: blur(22px);
+                                    -webkit-backdrop-filter: blur(22px); */
+                                        width: 100%;
+
+                                    }
+
+                                    .ps-description-sec .ps-description-inner {
+                                        margin-top: 25px;
                                     }
                                 }
                             </style>
@@ -1957,7 +1973,7 @@ autofillBrochureInModal1()</script>
                                 trigger.click();
                             }
                         }
-                    }, 7000);
+                    }, 10000);
 
                     // Fix backdrop issue when modals are closed
                     // Listen for all modal hide events
