@@ -25,16 +25,16 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-956108536"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'AW-956108536');
+        gtag('config', 'AW-956108536');
     </script>
 
     <!-- Event snippet for BSD-BTG-Thank You Page conversion page -->
     <script>
-        gtag('event', 'conversion', {'send_to': 'AW-956108536/q8HICPDCnc8bEPid9McD'});
+        gtag('event', 'conversion', { 'send_to': 'AW-956108536/q8HICPDCnc8bEPid9McD' });
     </script>
 
     <meta charset="utf-8">
@@ -51,128 +51,132 @@
     <link href="https://fonts.cdnfonts.com/css/centrale-sans-regular" rel="stylesheet">
 
     <style>
-       html,
-body {
-    margin: 0;
-    font-family: 'Centrale Sans Regular', sans-serif;
-    background: radial-gradient(circle at 20% 20%, #e8f5e9, #f7fafc 45%, #eef7f1);
-    min-height: 100vh;
-}
+        html,
+        body {
+            margin: 0;
+            font-family: 'Centrale Sans Regular', sans-serif;
+            background: radial-gradient(circle at 20% 20%, #e8f5e9, #f7fafc 45%, #eef7f1);
+            min-height: 100vh;
+        }
 
-/* HEADER */
-.simple-header {
-    width: 100%;
-    background: #fff;
-    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.06);
-    padding: 12px 0;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        /* HEADER */
+        .simple-header {
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 18px rgba(0, 0, 0, 0.06);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.simple-header img {
-    height: 56px;
-    max-width: 80%;
-}
+        .simple-header img {
+            height: 56px;
+            max-width: 80%;
+        }
 
-@media (max-width: 576px) {
-    .simple-header img {
-        height: 44px;
-    }
-}
+        @media (max-width: 576px) {
+            .simple-header img {
+                height: 44px;
+            }
+        }
 
-/* LAYOUT */
-.full-height {
-    min-height: calc(100vh - 80px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-}
+        /* LAYOUT */
+        .full-height {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
 
-/* THANK YOU BOX */
-.thank-you-box {
-    padding: 40px 32px;
-    border-radius: 16px;
-    text-align: center;
-    width: 100%;
-    max-width: 520px;
-    background: #fff;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e7f1ea;
-}
+        /* THANK YOU BOX */
+        .thank-you-box {
+            padding: 40px 32px;
+            border-radius: 16px;
+            text-align: center;
+            width: 100%;
+            max-width: 520px;
+            background: #fff;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e7f1ea;
+        }
 
-@media (max-width: 576px) {
-    .thank-you-box {
-        padding: 32px 20px;
-    }
-}
+        @media (max-width: 576px) {
+            .thank-you-box {
+                padding: 32px 20px;
+            }
+        }
 
-.thank-you-box h1 {
-    color: #1f7a34;
-    font-weight: 700;
-    letter-spacing: -0.4px;
-    font-size: 2rem;
-}
+        .thank-you-box h1 {
+            color: #1f7a34;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+            font-size: 2rem;
+        }
 
-@media (max-width: 576px) {
-    .thank-you-box h1 {
-        font-size: 1.75rem;
-    }
-}
+        @media (max-width: 576px) {
+            .thank-you-box h1 {
+                font-size: 1.75rem;
+            }
+        }
 
-.thank-you-box p {
-    color: #4a5568;
-    font-size: 1.125rem;
-}
+        .thank-you-box p {
+            color: #4a5568;
+            font-size: 1.125rem;
+        }
 
-@media (max-width: 576px) {
-    .thank-you-box p {
-        font-size: 1rem;
-    }
-}
+        @media (max-width: 576px) {
+            .thank-you-box p {
+                font-size: 1rem;
+            }
+        }
 
-/* CTA ROW */
-.cta-row {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-}
+        /* CTA ROW */
+        .cta-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-/* BUTTONS */
-.btn-pill {
-    border-radius: 999px;
-    padding: 12px 20px;
-    font-weight: 600;
-    min-width: 160px;
-    border: 1px solid #135B22;
-    background: #135B22;
-    color: #fff;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-}
+        /* BUTTONS */
+        .btn-pill {
+            border-radius: 999px;
+            padding: 12px 20px;
+            font-weight: 600;
+            min-width: 160px;
+            border: 1px solid #135B22;
+            background: #135B22;
+            color: #fff;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
 
-.btn-pill:hover {
-    background: #0f471b;
-    border-color: #0f471b;
-    color: #fff;
-}
+        .btn-pill.black-btn {
+            background: black;
 
-@media (max-width: 480px) {
-    .btn-pill {
-        min-width: 140px;
-        padding: 10px 16px;
-        font-size: 0.9rem;
-    }
-}
+        }
 
+        .btn-pill:hover {
+            background: #0f471b;
+            border-color: #0f471b;
+            color: #fff;
+        }
+
+        @media (max-width: 480px) {
+            .btn-pill {
+                min-width: 140px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
     <!-- Event snippet for Thank You Page BS conversion page -->
     <!-- <script>
@@ -193,8 +197,11 @@ body {
             <p class="mb-4 fs-5">Your enquiry has been submitted successfully. Our team will get in touch with you soon.
             </p>
             <div class="cta-row">
-                <a href="https://betweenthegreens.42estates.com/" class="btn btn-pill">Back to Home</a>
-                <a href="./images/Between_The_Greens_- E-Brochure.pdf" target="_blank" class="btn btn-pill" download>Download Brochure</a>
+                <a href="https://maps.app.goo.gl/fLRicc3eMRtxmdHVA" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-pill">Get Directions</a>
+                <a href="./images/Between_The_Greens_- E-Brochure.pdf" target="_blank" class="btn btn-pill"
+                    download>Download Brochure</a>
+                <a href="https://betweenthegreens.42estates.com/" class="btn btn-pill black-btn">Back to Home</a>
             </div>
         </div>
     </div>
