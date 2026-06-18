@@ -368,24 +368,6 @@
                 width: 100%;
             }
         }
-
-        /* Construction gallery lightbox: show full image within viewport */
-        .construction-gallery-custom .fancybox-slide {
-            max-height: none !important;
-        }
-
-        .construction-gallery-custom .fancybox-slide--image {
-            padding: 60px 15px 80px;
-        }
-
-        .construction-gallery-custom .fancybox-content {
-            max-width: calc(100vw - 30px) !important;
-            max-height: calc(100vh - 120px) !important;
-        }
-
-        .construction-gallery-custom .fancybox-image {
-            object-fit: contain;
-        }
     </style>
 </head>
 
@@ -1104,12 +1086,12 @@ autofillBrochureInModal1()</script>
                     <div class="row gx-1 gx-md-3 mb-5">
                         <div class="col-md-4">
                             <div class="construction-item">
-                                <a href="images/new-construction-img1.jpg" data-fancybox="construction-gallery"
+                                <a href="images/construction-5.png" data-fancybox="construction-gallery"
                                     data-caption="">
                                     <div class="image-wrapper">
                                         <img data-lazyloaded="1"
                                             src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                            data-src="images/new-construction-img1.jpg" class="img-fluid" alt="">
+                                            data-src="images/construction-5.png" class="img-fluid" alt="">
                                     </div>
                                     <div class="ps-pg-item-text"></div>
                                     <div class="overlay">
@@ -1120,12 +1102,12 @@ autofillBrochureInModal1()</script>
                         </div>
                         <div class="col-md-4">
                             <div class="construction-item">
-                                <a href="images/new-construction-img2.jpg" data-fancybox="construction-gallery"
+                                <a href="images/construction-2.png" data-fancybox="construction-gallery"
                                     data-caption="">
                                     <div class="image-wrapper">
                                         <img data-lazyloaded="1"
                                             src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                            data-src="images/new-construction-img2.jpg" class="img-fluid" alt="">
+                                            data-src="images/construction-2.png" class="img-fluid" alt="">
                                     </div>
                                     <div class="ps-pg-item-text"></div>
                                     <div class="overlay">
@@ -1136,12 +1118,12 @@ autofillBrochureInModal1()</script>
                         </div>
                         <div class="col-md-4">
                             <div class="construction-item">
-                                <a href="images/new-construction-img3.jpg" data-fancybox="construction-gallery"
+                                <a href="images/construction-4.png" data-fancybox="construction-gallery"
                                     data-caption="">
                                     <div class="image-wrapper">
                                         <img data-lazyloaded="1"
                                             src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                            data-src="images/new-construction-img3.jpg" class="img-fluid" alt="">
+                                            data-src="images/construction-4.png" class="img-fluid" alt="">
                                     </div>
                                     <div class="ps-pg-item-text"></div>
                                     <div class="overlay">
@@ -1150,12 +1132,12 @@ autofillBrochureInModal1()</script>
                                 </a>
                             </div>
                             <div class="construction-item">
-                                <a href="images/new-construction-img4.jpg" data-fancybox="construction-gallery"
+                                <a href="images/construction-1.png" data-fancybox="construction-gallery"
                                     data-caption="">
                                 </a>
                             </div>
                             <div class="construction-item">
-                                <a href="images/new-construction-img5.jpg" data-fancybox="construction-gallery"
+                                <a href="images/construction-3.png" data-fancybox="construction-gallery"
                                     data-caption="">
                                 </a>
                             </div>
@@ -2680,9 +2662,10 @@ autofillPropertyInModal();masterPropertyInModal()</script>
         document.addEventListener('DOMContentLiteSpeedLoaded', initPlanModals);
     </script>
     <script
-        type="litespeed/javascript">$(document).ready(function(){const gallerySettings={loop:!0,buttons:["zoom","fullScreen","slideShow","thumbs","close"],protect:!0,beforeShow:function(instance,current){let galleryClass;const galleryType=instance.$trigger.data('fancybox');if(galleryType==='gallery'){galleryClass='.hidden-gallery-item'}
-if(galleryClass){$(galleryClass).css('display','block')}}};$('[data-fancybox]').each(function(){const galleryType=$(this).data('fancybox');if(galleryType==='gallery'){$(this).fancybox(gallerySettings)}});const constructionGallerySettings={baseClass:"construction-gallery-custom",loop:!0,buttons:["zoom","fullScreen","slideShow","thumbs","close"],protect:!0,fitToView:!0,autoCenter:!0,beforeShow:function(instance,current){let galleryClass;const galleryType=instance.$trigger.data('fancybox');if(galleryType==='construction-gallery'){galleryClass='.hidden-cgallery-item'}else if(galleryType==='construction-gallery2'){galleryClass='.hidden-cgallery-item2'}
-if(galleryClass){$(galleryClass).css('display','block')}}};jQuery("[data-fancybox='construction-gallery'], [data-fancybox='construction-gallery2']").fancybox(constructionGallerySettings)})</script>
+        type="litespeed/javascript">$(document).ready(function(){const gallerySettings={loop:!0,buttons:["zoom","fullScreen","slideShow","thumbs","close"],protect:!0,beforeShow:function(instance,current){let galleryClass;const galleryType=instance.$trigger.data('fancybox');if(galleryType==='gallery'){galleryClass='.hidden-gallery-item'}else if(galleryType==='construction-gallery'){galleryClass='.hidden-cgallery-item'}else if(galleryType==='construction-gallery2'){galleryClass='.hidden-cgallery-item2'}
+if(galleryClass){$(galleryClass).css('display','block')}}};$('[data-fancybox]').each(function(){const galleryType=$(this).data('fancybox');if(galleryType==='gallery'||galleryType==='construction-gallery'||galleryType==='construction-gallery2'){$(this).fancybox(gallerySettings)}})})</script>
+    <script
+        type="litespeed/javascript">jQuery("[data-fancybox='construction-gallery'], [data-fancybox='construction-gallery2']").fancybox({baseClass:"construction-gallery-custom"})</script>
     <!-- <script src="https://backend.livhousing.com/bot/create-script-tag?token=63cc37b3-fb67-492d-b855-99db9796ff65"
         type="application/javascript"></script> -->
     <script
