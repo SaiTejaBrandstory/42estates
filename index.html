@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
@@ -12,10 +11,9 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link rel="preload" as="image" href="images/between-greens-logo-opt.webp" type="image/webp" fetchpriority="high">
-    <link rel="preload" as="image" href="images/btg-banner-mobile.webp" type="image/webp" media="(max-width: 767px)"
+    <link rel="preload" as="image" href="images/btg-hero-mobile.webp" type="image/webp" media="(max-width: 767.98px)"
         fetchpriority="high">
-    <link rel="preload" as="image" href="images/btg-banner.webp" type="image/webp" media="(min-width: 768px)"
+    <link rel="preload" as="image" href="images/btg-hero-desktop.webp" type="image/webp" media="(min-width: 768px)"
         fetchpriority="high">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta property="og:locale" content="en_US" />
@@ -53,6 +51,16 @@
     <noscript>
         <link href="https://fonts.cdnfonts.com/css/centrale-sans-regular" rel="stylesheet">
     </noscript>
+    <style>
+        /* Avoid FOIT while font loads */
+        @font-face {
+            font-family: 'Centrale Sans Regular';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Centrale Sans Regular');
+        }
+    </style>
 
     <!-- Analytics delayed until idle to protect mobile FCP -->
     <script>
@@ -74,9 +82,9 @@
             })(window, document, 'script', 'dataLayer', 'GTM-5NK7R79B');
         }
         if ('requestIdleCallback' in window) {
-            requestIdleCallback(loadAnalytics, { timeout: 6000 });
+            requestIdleCallback(loadAnalytics, { timeout: 10000 });
         } else {
-            window.addEventListener('load', function () { setTimeout(loadAnalytics, 4000); });
+            window.addEventListener('load', function () { setTimeout(loadAnalytics, 8000); });
         }
     </script>
 
@@ -146,7 +154,29 @@
 
         .site--form .form-control,
         .site--form .form-select {
-            padding: 1.5rem 0 !important;
+            padding: 20px 0 !important;
+        }
+
+        .site--form textarea.form-control{
+            height: 60px!important;
+            padding-top:0 !important;
+        }
+
+        /* Mobile: keep form inputs 50-50; textarea/full rows stay 100% */
+        @media (max-width: 767.98px) {
+            .site--form .row > .col-md-6,
+            .ps-enquire-form .row > .col-md-6 {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+
+            .site--form .row > .col-md-12,
+            .ps-enquire-form .row > .col-md-12,
+            .site--form .row > .col-12,
+            .ps-enquire-form .row > .col-12 {
+                flex: 0 0 auto;
+                width: 100%;
+            }
         }
 
         .footer-band {
@@ -289,6 +319,19 @@
             top: 0;
             z-index: 1040;
             background: #fff;
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+
+        .site-header.is-header-hidden {
+            transform: translateY(-250%);
+            pointer-events: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .site-header {
+                transition: none;
+            }
         }
 
         .header-btn {
@@ -326,50 +369,109 @@
             left: 0;
             right: 0;
             z-index: 1050;
-            padding: 12px 12px 16px;
+            padding: 12px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+            pointer-events: none;
         }
 
         .mobile-cta-wrap {
+            pointer-events: auto;
             display: flex;
-            align-items: center;
+            align-items: stretch;
             justify-content: center;
-            gap: 12px;
-
-            background: rgba(19, 91, 35, 0.712);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            gap: 8px;
+            max-width: 380px;
+            margin: 0 auto;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(24px) saturate(170%);
+            -webkit-backdrop-filter: blur(24px) saturate(170%);
             border-radius: 999px;
-            border: 1px solid rgba(225, 225, 225, 0.14);
-            padding: 4px;
-            box-shadow: inset 0 0 0 1px rgba(19, 91, 34, 0.05);
+            border: 1px solid rgba(19, 91, 34, 0.1);
+            box-shadow:
+                0 14px 36px rgba(22, 29, 53, 0.14),
+                0 2px 6px rgba(19, 91, 34, 0.06);
+            animation: mobileCtaIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        @keyframes mobileCtaIn {
+            from {
+                opacity: 0;
+                transform: translateY(110%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .mobile-cta-segmented {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 8px;
             flex: 1;
             min-width: 0;
-            padding: 12px 14px;
+            padding: 13px 16px;
             border-radius: 999px;
             text-decoration: none;
-            color: #fff;
-            transition: all 0.25s ease;
+            color: #135B22;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1;
+            transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .mobile-cta-segmented:hover {
-            background: rgba(19, 91, 34, 0.08);
+            background: rgba(19, 91, 34, 0.07);
+            color: #135B22;
+        }
+
+        .mobile-cta-segmented:active {
+            transform: scale(0.97);
+        }
+
+        .mobile-cta-segmented:focus-visible {
+            outline: 2px solid #135B22;
+            outline-offset: 2px;
         }
 
         .mobile-cta-segmented-phone {
-            border-radius: 999px;
+            background: transparent;
+            border: 1px solid rgba(19, 91, 34, 0.22);
+        }
+
+        .mobile-cta-segmented-phone:hover {
+            border-color: #135B22;
+            background: rgba(19, 91, 34, 0.06);
+        }
+
+        .mobile-cta-segmented-fill {
+            background: #135B22;
+            color: #fff;
+            border: 1px solid #135B22;
+            box-shadow: 0 6px 16px rgba(19, 91, 34, 0.28);
+        }
+
+        .mobile-cta-segmented-fill:hover {
+            background: #0f471b;
+            border-color: #0f471b;
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(19, 91, 34, 0.34);
+        }
+
+        .mobile-cta-segmented-fill:active {
+            transform: scale(0.97);
         }
 
         .mobile-cta-icon {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             flex-shrink: 0;
-            color: #fff;
+            color: currentColor;
         }
 
         .mobile-cta-segmented-fill .mobile-cta-icon {
@@ -377,23 +479,36 @@
         }
 
         .mobile-cta-segmented span {
-            display: inline-flex;
-            flex-direction: column;
-            line-height: 1.1;
-            text-align: left;
+            display: inline;
+            line-height: 1;
+            white-space: nowrap;
         }
 
         .mobile-cta-segmented span strong {
-            display: block;
-            font-size: 12px;
             font-weight: 700;
+            letter-spacing: inherit;
+            text-transform: inherit;
+            color: inherit;
         }
 
         .mobile-cta-divider {
-            width: 1.5px;
-            height: 42px;
-            background: rgba(225, 225, 225, 0.70);
-            border-radius: 2px;
+            display: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .mobile-cta-wrap {
+                animation: none;
+            }
+
+            .mobile-cta-segmented,
+            .mobile-cta-segmented-fill {
+                transition: none;
+            }
+
+            .mobile-cta-segmented:active,
+            .mobile-cta-segmented-fill:active {
+                transform: none;
+            }
         }
 
         .mobile-whatsapp-fab {
@@ -497,22 +612,48 @@
 
 
         .ps--banner {
-            background-image: url('images/btg-banner-mobile.webp');
-            background-image: image-set(url('images/btg-banner-mobile.webp') type('image/webp'), url('images/btg-banner-mobile.webp') type('image/jpeg'));
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             position: relative;
+            overflow: hidden;
+            background-color: #0c1610;
+            background-image: none;
+            background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+            padding: 40px 0 !important;
+            min-height: 420px;
         }
 
-        .ps--banner>.container {
+        .banner-lcp {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .banner-lcp img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .ps--banner > .container {
             position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .ps--banner {
+                min-height: 560px;
+            }
         }
 
         .banner-42-logo {
             position: absolute;
             left: var(--bs-gutter-x, 0.75rem);
-            top: -240px;
+            top: 0;
             z-index: 6;
             display: block;
             width: 72px;
@@ -531,7 +672,8 @@
 
         @media (min-width: 992px) {
             .banner-42-logo {
-                top: -130px;
+                top: 100%;
+                left:10px;
                 width: 90px;
             }
         }
@@ -543,10 +685,10 @@
         }
 
         @media (min-width: 768px) {
-            .ps--banner {
-                background-image: url('images/btg-banner.webp');
-                background-image: image-set(url('images/btg-banner.webp') type('image/webp'), url('images/btg-banner-desktop.jpg') type('image/jpeg'));
-            }
+            /* .ps--banner {
+                background-image: url('images/images/between-the-greens-hero2.webp');
+                background-image: image-set(url('images/between-the-greens-hero2.webp') type('image/webp'), url('images/between-the-greens-hero2.webp') type('image/webp'));
+            } */
         }
 
 
@@ -581,6 +723,14 @@
             margin: -24px 0 0 -34px;
             background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 48'%3E%3Cpath fill='%23f00' d='M66.5 7.7a8.5 8.5 0 0 0-6-6C55.4.7 34 .7 34 .7S12.6.7 7.5 1.7a8.5 8.5 0 0 0-6 6C.5 12.8.5 24 .5 24s0 11.2 1 16.3a8.5 8.5 0 0 0 6 6c5.1 1 26.5 1 26.5 1s21.4 0 26.5-1a8.5 8.5 0 0 0 6-6c1-5.1 1-16.3 1-16.3s0-11.2-1-16.3z'/%3E%3Cpath fill='%23fff' d='M45 24 27 14v20z'/%3E%3C/svg%3E") center / contain no-repeat;
             pointer-events: none;
+        }
+
+        .yt-facade[data-played]::after {
+            display: none;
+        }
+
+        .yt-facade[data-played] {
+            cursor: default;
         }
 
         .yt-facade iframe {
@@ -636,8 +786,8 @@
         }
 
         .banner-enquire-form .txt-20 {
-            font-size: 16px;
-            margin-bottom: 12px;
+            font-size: 12px;
+            margin-bottom: 0!important;
         }
 
         .banner-enquire-form select {
@@ -665,44 +815,65 @@
             margin-bottom: 0;
         }
 
-        /* Official 42 Estates form watermark */
+        /* Official 42 Estates — top tab extension on form card */
         .site--form,
         .ps-enquire-form {
             position: relative;
+            overflow: visible;
+            border-top-left-radius: 0!important;
+            border-top-right-radius: 0!important;
+            margin-top: 28px;
+        }
+
+        .site--form:has(> .official-42-mark),
+        .ps-enquire-form:has(> .official-42-mark) {
+            margin-top: 28px;
         }
 
         .official-42-mark {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            z-index: 2;
+            transform: translate(-50%, -100%);
             display: block;
             width: 100%;
-            margin-top: 10px;
-            padding-top: 8px;
-            border-top: 1px solid rgba(19, 91, 34, 0.12);
+            max-width: 100%;
+            margin: 0;
+            padding: 6px 16px;
+            border: 0;
+            border-radius: 4px 4px 0 0;
+            background: #135B22;
+            color: #fff;
             text-align: center;
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 600;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #135B22;
-            opacity: 0.9;
             line-height: 1.3;
+            white-space: nowrap;
             pointer-events: none;
             user-select: none;
         }
 
         .official-42-mark span {
             display: inline-block;
+            color: #fff;
         }
 
-        .modal .official-42-mark {
-            margin-top: 8px;
-            padding-bottom: 2px;
+        .modal .modal-content:has(.official-42-mark),
+        .modal .modal-body:has(.official-42-mark) {
+            overflow: visible;
         }
 
-        .banner-enquire-form .official-42-mark {
-            margin-top: 6px;
-            margin-bottom: 6px;
-            padding-left: 4px;
-            padding-right: 4px;
+        .modal .site--form:has(> .official-42-mark),
+        .modal .ps-enquire-form:has(> .official-42-mark) {
+            margin-top: 24px;
+        }
+
+        .banner-enquire-form.site--form:has(> .official-42-mark),
+        .banner-enquire-form.ps-enquire-form:has(> .official-42-mark) {
+            margin-top: 28px;
         }
 
         @media (max-width: 768px) {
@@ -720,6 +891,58 @@
             .ps-description-sec .ps-description-inner {
                 margin-top: 25px;
             }
+
+            .form_eyebrow small{
+                font-size: 11px;
+            }
+            .banner-enquire-form .txt-20{
+                font-size: 10px;
+            }
+
+            .banner-42-logo{
+                top: 8px;
+                width: unset!important;
+            }
+
+            .banner-42-logo img {
+              width: 100%;
+              display: block;
+              height: 95px !important;
+             }
+        }
+
+        .ps-enquire-form  p{
+            font-size: 12px;
+        }
+
+        .form_eyebrow small{
+            color: #135B22 !important;
+            font-weight: 600!important;
+        }
+
+        form input::placeholder{
+            font-size: 10px;
+        }
+        form select::placeholder{
+            font-size: 10px;
+        }
+        form textarea::placeholder{
+            font-size: 10px;
+        }
+        form input{
+            height: 24px!important;
+        }
+        form textarea{
+          padding-top:0 !important;   
+        }
+        .form-check-input{
+            height: 1rem!important;
+        }
+        @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+         .banner-42-logo{
+          top: 100%;
+          width:100px;
+         }
         }
     </style>
 </head>
@@ -732,11 +955,17 @@
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <header class="site-header shadow-sm">
-        <div class="container d-flex align-items-center justify-content-between py-3">
+        <div class="container d-flex align-items-center justify-content-between py-3 position-relative">
             <a href="/" class="d-inline-flex align-items-center">
                 <img src="images/between-greens-logo-opt.webp" alt="42 Estates" width="160" height="46"
-                    style="height: 48px; width: auto;" class="img-fluid" decoding="async" fetchpriority="high">
+                    style="height: 48px; width: auto;" class="img-fluid" decoding="async" fetchpriority="low">
             </a>
+      <a href="https://42estates.com/" class="banner-42-logo" target="_blank" rel="noopener noreferrer"
+                        aria-label="Official 42 Estates">
+                        <img src="images/42-estates-official-logo.svg" alt="42 Estates" width="107" height="125"
+                            decoding="async">
+                    </a>
+            
             <div class="d-none d-md-flex gap-2 header-actions">
                 <a class="header-btn" href="tel:+918880804242">
                     <img src="images/phone-btwgreens.svg" alt="42 Estates" style="height: 20px;" class="img-fluid">
@@ -756,16 +985,13 @@
     <div class="mobile-cta-bar d-md-none">
         <div class="mobile-cta-wrap d-flex align-items-center">
             <a class="mobile-cta-segmented mobile-cta-segmented-phone" href="tel:+918880804242"
-                aria-label="Call 8880804242">
+                aria-label="Call Now 8880804242">
                 <svg class="mobile-cta-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                     <path
                         d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.72 11.72 0 003.7.59 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.7 1 1 0 01-.21 1.11l-2.2 2.2z"
                         fill="currentColor" />
                 </svg>
-                <span>
-                    <strong>Call Now</strong>
-                    8880804242
-                </span>
+                <span><strong>Call Now</strong></span>
             </a>
             <span class="mobile-cta-divider" aria-hidden="true"></span>
             <a class="mobile-cta-segmented mobile-cta-segmented-fill" href="#" data-bs-toggle="modal"
@@ -774,10 +1000,7 @@
                     <path d="M12 3v10m0 0l-3-3m3 3l3-3M6 17h12" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <span>
-                    <strong>Brochure</strong>
-                    Download
-                </span>
+                <span><strong>Brochure</strong></span>
             </a>
         </div>
     </div>
@@ -798,29 +1021,38 @@ autofillBrochureInModal()</script>
 autofillBrochureInModal1()</script>
             <section
                 class="ps--banner page-banner pt-100 pt-md-130 spb-50 d-flex justify-content-end justify-content-md-center">
+                <picture class="banner-lcp">
+                    <source media="(max-width: 767.98px)" srcset="images/btg-hero-mobile.webp" type="image/webp">
+                    <source media="(min-width: 768px)" srcset="images/btg-hero-desktop.webp" type="image/webp">
+                    <img src="images/btg-hero-mobile.webp" alt="Between the Greens villa" width="900" height="1200"
+                        sizes="100vw" fetchpriority="high" decoding="async">
+                </picture>
                 <div class="container position-relative d-flex justify-content-center align-items-center">
-                    <a href="https://42estates.com/" class="banner-42-logo" target="_blank" rel="noopener noreferrer"
+                    <!-- <a href="https://42estates.com/" class="banner-42-logo" target="_blank" rel="noopener noreferrer"
                         aria-label="Official 42 Estates">
                         <img src="images/42-estates-official-logo.svg" alt="42 Estates" width="107" height="125"
                             decoding="async">
-                    </a>
+                    </a> -->
                     <div class="row banner-offer-row gx-md-4 gy-3">
-                        <div class="col-lg-6 col-12 d-flex align-items-center">
-                            <div class="offer-banner">
+                        <div class="col-lg-7 col-12 d-flex align-items-center">
+                            <!-- <div class="offer-banner">
                                 <h2>
                                     Luxury 4BHK Villa 4 Cr<br /> Limited Period Offer
                                 </h2>
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="col-lg-6 col-12 d-none d-lg-block">
+
+                        <div class="col-lg-5 col-12 d-none d-lg-block">
                             <div class="ps-enquire-form site--form banner-enquire-form p-0">
                                 <div class="p-3 p-md-4">
-                                    <small class="text-uppercase">Enquire</small>
-                                    <p class="txt-20 mt-2 mb-3">Fill up the form below and we will get in touch with you
-                                    </p>
+                                    <div class='form_eyebrow'>
+                                        <small class="text-uppercase"> Luxury 4BHK Villa 4Cr Limited Period Offer</small>
+                                        <p class="txt-20 mt-2 mb-3">Fill up the form below and we will get in touch with you
+                                        </p>
+                                    </div>
                                     <form class="single-prj-form banner-prj-form"
                                         action="https://devopspro.agency/2025/sapphire-villa/submit_api.php"
-                                        method="POST">
+                                        method="POST"> 
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <input type="text" id="banner_f_name" name="f_name" class="form-control"
@@ -867,17 +1099,7 @@ autofillBrochureInModal1()</script>
                                                         name="consent" required>
                                                     <label class="form-check-label" for="consent-banner"
                                                         style="font-size: 10px;">
-                                                        By submitting your contact details through any form on this
-                                                        website,
-                                                        you consent to being
-                                                        contacted by 42 Estates via phone, email, WhatsApp, or SMS. This
-                                                        includes communication
-                                                        regarding project updates, promotional offers, and other
-                                                        relevant
-                                                        information. Your contact
-                                                        information will remain confidential and will be used solely for
-                                                        the
-                                                        purposes stated above.
+                                                        By submitting this form, you consent to receive communications from 42 Estates via phone, email, WhatsApp, or SMS regarding project updates and offers. Your information will be kept confidential.
                                                     </label>
                                                 </div>
                                             </div>
@@ -898,8 +1120,10 @@ autofillBrochureInModal1()</script>
                 <div class="container">
                     <div class="ps-enquire-form site--form banner-enquire-form p-0">
                         <div class="p-3">
-                            <small class="text-uppercase">Enquire</small>
-                            <p class="txt-20 mt-2 mb-3">Fill up the form below and we will get in touch with you</p>
+                            <div class="form_eyebrow">
+                                <small class="text-uppercase">Luxury 4BHK Villa 4Cr Limited Period Offer</small>
+                                <p class="txt-20 mt-2 mb-3">Fill up the form below and we will get in touch with you</p>
+                            </div>
                             <form class="single-prj-form banner-prj-form-mobile"
                                 action="https://devopspro.agency/2025/sapphire-villa/submit_api.php" method="POST">
                                 <div class="row">
@@ -947,12 +1171,7 @@ autofillBrochureInModal1()</script>
                                                 name="consent" required>
                                             <label class="form-check-label" for="consent-banner-mobile"
                                                 style="font-size: 10px;">
-                                                By submitting your contact details through any form on this website,
-                                                you consent to being contacted by 42 Estates via phone, email, WhatsApp,
-                                                or SMS. This includes communication regarding project updates,
-                                                promotional offers, and other relevant information. Your contact
-                                                information will remain confidential and will be used solely for the
-                                                purposes stated above.
+                                                By submitting this form, you consent to receive communications from 42 Estates via phone, email, WhatsApp, or SMS regarding project updates and offers. Your information will be kept confidential.
                                             </label>
                                         </div>
                                     </div>
@@ -1418,8 +1637,10 @@ autofillBrochureInModal1()</script>
                         </div>
                         <div class="col-lg-5 mt-3 mt-lg-0">
                             <div class="ps-enquire-form site--form">
-                                <small class="text-uppercase">Enquire</small>
-                                <p class="txt-20 mt-2">Fill up the form below and we will get in touch with you</p>
+                                <div class="form_eyebrow">
+                                    <small class="text-uppercase">Luxury 4BHK Villa 4Cr Limited Period Offer</small>
+                                    <p class="txt-20 mt-2">Fill up the form below and we will get in touch with you</p>
+                                </div>
                                 <form class="single-prj-form"
                                     action="https://devopspro.agency/2025/sapphire-villa/submit_api.php" method="POST">
                                     <div class="row">
@@ -1488,14 +1709,7 @@ autofillBrochureInModal1()</script>
                                                     name="consent" required>
                                                 <label class="form-check-label" for="consent-new"
                                                     style="font-size: 10px;">
-                                                    By submitting your contact details through any form on this website,
-                                                    you consent to being
-                                                    contacted by 42 Estates via phone, email, WhatsApp, or SMS. This
-                                                    includes communication
-                                                    regarding project updates, promotional offers, and other relevant
-                                                    information. Your contact
-                                                    information will remain confidential and will be used solely for the
-                                                    purposes stated above.
+                                                    By submitting this form, you consent to receive communications from 42 Estates via phone, email, WhatsApp, or SMS regarding project updates and offers. Your information will be kept confidential.
                                                 </label>
                                             </div>
                                         </div>
@@ -1745,8 +1959,11 @@ autofillBrochureInModal1()</script>
                         <div class="modal-body" style="padding: 5px 0px 0px 0px;">
 
                             <div class="ps-enquire-form site--form">
-                                <small class="text-uppercase">Enquire</small>
-                                <p class="txt-20 mt-2">Fill up the form below and we will get in touch with you</p>
+                                <div class="form_eyebrow">
+                                    <small class="text-uppercase">Luxury 4BHK Villa 4Cr Limited Period Offer
+                                    </small>
+                                    <p class="txt-20 mt-2">Fill up the form below and we will get in touch with you</p>
+                                </div>
                                 <div class="row d-none">
                                     <div class="col-12">
                                         <div class="p-3 border rounded mb-3 bg-light text-center">
@@ -1790,14 +2007,7 @@ autofillBrochureInModal1()</script>
                                                     name="consent" required>
                                                 <label class="form-check-label" for="consent_auto"
                                                     style="font-size: 10px;">
-                                                    By submitting your contact details through any form on this website,
-                                                    you consent to being
-                                                    contacted by 42 Estates via phone, email, WhatsApp, or SMS. This
-                                                    includes communication
-                                                    regarding project updates, promotional offers, and other relevant
-                                                    information. Your contact
-                                                    information will remain confidential and will be used solely for the
-                                                    purposes stated above.
+                                                    By submitting this form, you consent to receive communications from 42 Estates via phone, email, WhatsApp, or SMS regarding project updates and offers. Your information will be kept confidential.
                                                 </label>
                                             </div>
                                         </div>
@@ -1942,21 +2152,7 @@ autofillBrochureInModal1()</script>
                                                             name="consent" required>
                                                         <label class="form-check-label" for="consent"
                                                             style="font-size: 10px;">
-                                                            By submitting your contact details through any form on
-                                                            this
-                                                            website,
-                                                            you consent to being
-                                                            contacted by 42 Estates via phone, email, WhatsApp, or
-                                                            SMS.
-                                                            This
-                                                            includes communication
-                                                            regarding project updates, promotional offers, and other
-                                                            relevant
-                                                            information. Your contact
-                                                            information will remain confidential and will be used
-                                                            solely
-                                                            for the
-                                                            purposes stated above.
+                                                            By submitting this form, you consent to receive communications from 42 Estates via phone, email, WhatsApp, or SMS regarding project updates and offers. Your information will be kept confidential.
                                                         </label>
                                                     </div>
                                                 </div>
@@ -2060,17 +2256,7 @@ autofillBrochureInModal1()</script>
                                                     name="consent" required>
                                                 <label class="form-check-label" for="consent_master"
                                                     style="font-size: 10px;">
-                                                    By submitting your contact details through any form on this
-                                                    website,
-                                                    you consent to being
-                                                    contacted by 42 Estates via phone, email, WhatsApp, or SMS. This
-                                                    includes communication
-                                                    regarding project updates, promotional offers, and other
-                                                    relevant
-                                                    information. Your contact
-                                                    information will remain confidential and will be used solely for
-                                                    the
-                                                    purposes stated above.
+                                                    By submitting this form, you consent to receive communications from 42 Estates via phone, email, WhatsApp, or SMS regarding project updates and offers. Your information will be kept confidential.
                                                 </label>
                                             </div>
                                         </div>
@@ -2151,14 +2337,7 @@ document.addEventListener('DOMContentLiteSpeedLoaded',autofillInterestedProperty
                                         <input class="form-check-input" type="checkbox" id="consent_floor"
                                             name="consent" required>
                                         <label class="form-check-label" for="consent_floor" style="font-size: 10px;">
-                                            By submitting your contact details through any form on this website,
-                                            you consent to being
-                                            contacted by 42 Estates via phone, email, WhatsApp, or SMS. This
-                                            includes communication
-                                            regarding project updates, promotional offers, and other relevant
-                                            information. Your contact
-                                            information will remain confidential and will be used solely for the
-                                            purposes stated above.
+                                            By submitting this form, you consent to receive communications from 42 Estates via phone, email, WhatsApp, or SMS regarding project updates and offers. Your information will be kept confidential.
                                         </label>
                                     </div>
                                 </div>
@@ -2405,7 +2584,7 @@ if(galleryClass){$(galleryClass).css('display','block')}}};$('[data-fancybox]').
                     mark.className = 'official-42-mark';
                     mark.setAttribute('aria-hidden', 'true');
                     mark.innerHTML = '<span>Official 42 Estates</span>';
-                    box.appendChild(mark);
+                    box.insertBefore(mark, box.firstChild);
                 });
             }
 
@@ -2417,6 +2596,37 @@ if(galleryClass){$(galleryClass).css('display','block')}}};$('[data-fancybox]').
             document.addEventListener('shown.bs.modal', function (e) {
                 if (e.target) addOfficialMarks(e.target);
             });
+        })();
+    </script>
+    <script data-no-optimize="1">
+        (function () {
+            var header = document.querySelector('.site-header');
+            if (!header) return;
+
+            var lastY = window.scrollY || 0;
+            var ticking = false;
+            var delta = 8;
+
+            function updateHeader() {
+                var y = window.scrollY || 0;
+                if (y <= 10) {
+                    header.classList.remove('is-header-hidden');
+                } else if (y > lastY + delta) {
+                    header.classList.add('is-header-hidden');
+                } else if (y < lastY - delta) {
+                    header.classList.remove('is-header-hidden');
+                }
+                lastY = y;
+            }
+
+            window.addEventListener('scroll', function () {
+                if (ticking) return;
+                ticking = true;
+                window.requestAnimationFrame(function () {
+                    updateHeader();
+                    ticking = false;
+                });
+            }, { passive: true });
         })();
     </script>
     <script data-no-optimize="1">
@@ -2461,9 +2671,6 @@ if(galleryClass){$(galleryClass).css('display','block')}}};$('[data-fancybox]').
 
             function applyAosAttrs() {
                 var rules = [
-                    { sel: '.offer-banner', anim: 'fade-right', duration: 800 },
-                    { sel: '.ps--banner .banner-enquire-form', anim: 'fade-left', duration: 800, delay: 150 },
-                    { sel: '.banner-mobile-enquire .banner-enquire-form', anim: 'fade-up', duration: 700 },
                     { sel: '.ps-description-sec .ps-description-title', anim: 'fade-up', duration: 700 },
                     { sel: '.ps-description-inner', anim: 'fade-up', duration: 800 },
                     { sel: '.ps-video-sec .yt-facade', anim: 'zoom-in', duration: 800 },
@@ -2545,24 +2752,29 @@ if(galleryClass){$(galleryClass).css('display','block')}}};$('[data-fancybox]').
             }
 
             function scheduleAos() {
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', function () {
-                        setTimeout(initAOS, 50);
-                    });
-                } else {
-                    setTimeout(initAOS, 50);
+                function start() {
+                    if ('requestIdleCallback' in window) {
+                        requestIdleCallback(function () { initAOS(); }, { timeout: 4000 });
+                    } else {
+                        setTimeout(initAOS, 2000);
+                    }
                 }
+
+                if (document.readyState === 'complete') {
+                    start();
+                } else {
+                    window.addEventListener('load', start, { once: true });
+                }
+
                 window.addEventListener('load', function () {
-                    setTimeout(refreshAos, 200);
+                    setTimeout(refreshAos, 400);
                 });
                 document.addEventListener('DOMContentLiteSpeedLoaded', function () {
                     setTimeout(refreshAos, 150);
                 });
-                // Gallery tab switch: re-run for newly visible panes
                 document.addEventListener('shown.bs.tab', function () {
                     setTimeout(refreshAos, 50);
                 });
-                // After images lazy-load, positions change
                 window.addEventListener('scroll', function () {
                     if (!aosReady) return;
                     clearTimeout(window.__aosScrollT);
@@ -2575,7 +2787,7 @@ if(galleryClass){$(galleryClass).css('display','block')}}};$('[data-fancybox]').
             scheduleAos();
         })();
     </script>
-    <script data-no-optimize="1">window.lazyLoadOptions = Object.assign({}, { threshold: 300 }, window.lazyLoadOptions || {}); !function (t, e) { "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : (t = "undefined" != typeof globalThis ? globalThis : t || self).LazyLoad = e() }(this, function () { "use strict"; function e() { return (e = Object.assign || function (t) { for (var e = 1; e < arguments.length; e++) { var n, a = arguments[e]; for (n in a) Object.prototype.hasOwnProperty.call(a, n) && (t[n] = a[n]) } return t }).apply(this, arguments) } function o(t) { return e({}, at, t) } function l(t, e) { return t.getAttribute(gt + e) } function c(t) { return l(t, vt) } function s(t, e) { return function (t, e, n) { e = gt + e; null !== n ? t.setAttribute(e, n) : t.removeAttribute(e) }(t, vt, e) } function i(t) { return s(t, null), 0 } function r(t) { return null === c(t) } function u(t) { return c(t) === _t } function d(t, e, n, a) { t && (void 0 === a ? void 0 === n ? t(e) : t(e, n) : t(e, n, a)) } function f(t, e) { et ? t.classList.add(e) : t.className += (t.className ? " " : "") + e } function _(t, e) { et ? t.classList.remove(e) : t.className = t.className.replace(new RegExp("(^|\\s+)" + e + "(\\s+|$)"), " ").replace(/^\s+/, "").replace(/\s+$/, "") } function g(t) { return t.llTempImage } function v(t, e) { !e || (e = e._observer) && e.unobserve(t) } function b(t, e) { t && (t.loadingCount += e) } function p(t, e) { t && (t.toLoadCount = e) } function n(t) { for (var e, n = [], a = 0; e = t.children[a]; a += 1)"SOURCE" === e.tagName && n.push(e); return n } function h(t, e) { (t = t.parentNode) && "PICTURE" === t.tagName && n(t).forEach(e) } function a(t, e) { n(t).forEach(e) } function m(t) { return !!t[lt] } function E(t) { return t[lt] } function I(t) { return delete t[lt] } function y(e, t) { var n; m(e) || (n = {}, t.forEach(function (t) { n[t] = e.getAttribute(t) }), e[lt] = n) } function L(a, t) { var o; m(a) && (o = E(a), t.forEach(function (t) { var e, n; e = a, (t = o[n = t]) ? e.setAttribute(n, t) : e.removeAttribute(n) })) } function k(t, e, n) { f(t, e.class_loading), s(t, st), n && (b(n, 1), d(e.callback_loading, t, n)) } function A(t, e, n) { n && t.setAttribute(e, n) } function O(t, e) { A(t, rt, l(t, e.data_sizes)), A(t, it, l(t, e.data_srcset)), A(t, ot, l(t, e.data_src)) } function w(t, e, n) { var a = l(t, e.data_bg_multi), o = l(t, e.data_bg_multi_hidpi); (a = nt && o ? o : a) && (t.style.backgroundImage = a, n = n, f(t = t, (e = e).class_applied), s(t, dt), n && (e.unobserve_completed && v(t, e), d(e.callback_applied, t, n))) } function x(t, e) { !e || 0 < e.loadingCount || 0 < e.toLoadCount || d(t.callback_finish, e) } function M(t, e, n) { t.addEventListener(e, n), t.llEvLisnrs[e] = n } function N(t) { return !!t.llEvLisnrs } function z(t) { if (N(t)) { var e, n, a = t.llEvLisnrs; for (e in a) { var o = a[e]; n = e, o = o, t.removeEventListener(n, o) } delete t.llEvLisnrs } } function C(t, e, n) { var a; delete t.llTempImage, b(n, -1), (a = n) && --a.toLoadCount, _(t, e.class_loading), e.unobserve_completed && v(t, n) } function R(i, r, c) { var l = g(i) || i; N(l) || function (t, e, n) { N(t) || (t.llEvLisnrs = {}); var a = "VIDEO" === t.tagName ? "loadeddata" : "load"; M(t, a, e), M(t, "error", n) }(l, function (t) { var e, n, a, o; n = r, a = c, o = u(e = i), C(e, n, a), f(e, n.class_loaded), s(e, ut), d(n.callback_loaded, e, a), o || x(n, a), z(l) }, function (t) { var e, n, a, o; n = r, a = c, o = u(e = i), C(e, n, a), f(e, n.class_error), s(e, ft), d(n.callback_error, e, a), o || x(n, a), z(l) }) } function T(t, e, n) { var a, o, i, r, c; t.llTempImage = document.createElement("IMG"), R(t, e, n), m(c = t) || (c[lt] = { backgroundImage: c.style.backgroundImage }), i = n, r = l(a = t, (o = e).data_bg), c = l(a, o.data_bg_hidpi), (r = nt && c ? c : r) && (a.style.backgroundImage = 'url("'.concat(r, '")'), g(a).setAttribute(ot, r), k(a, o, i)), w(t, e, n) } function G(t, e, n) { var a; R(t, e, n), a = e, e = n, (t = Et[(n = t).tagName]) && (t(n, a), k(n, a, e)) } function D(t, e, n) { var a; a = t, (-1 < It.indexOf(a.tagName) ? G : T)(t, e, n) } function S(t, e, n) { var a; t.setAttribute("loading", "lazy"), R(t, e, n), a = e, (e = Et[(n = t).tagName]) && e(n, a), s(t, _t) } function V(t) { t.removeAttribute(ot), t.removeAttribute(it), t.removeAttribute(rt) } function j(t) { h(t, function (t) { L(t, mt) }), L(t, mt) } function F(t) { var e; (e = yt[t.tagName]) ? e(t) : m(e = t) && (t = E(e), e.style.backgroundImage = t.backgroundImage) } function P(t, e) { var n; F(t), n = e, r(e = t) || u(e) || (_(e, n.class_entered), _(e, n.class_exited), _(e, n.class_applied), _(e, n.class_loading), _(e, n.class_loaded), _(e, n.class_error)), i(t), I(t) } function U(t, e, n, a) { var o; n.cancel_on_exit && (c(t) !== st || "IMG" === t.tagName && (z(t), h(o = t, function (t) { V(t) }), V(o), j(t), _(t, n.class_loading), b(a, -1), i(t), d(n.callback_cancel, t, e, a))) } function $(t, e, n, a) { var o, i, r = (i = t, 0 <= bt.indexOf(c(i))); s(t, "entered"), f(t, n.class_entered), _(t, n.class_exited), o = t, i = a, n.unobserve_entered && v(o, i), d(n.callback_enter, t, e, a), r || D(t, n, a) } function q(t) { return t.use_native && "loading" in HTMLImageElement.prototype } function H(t, o, i) { t.forEach(function (t) { return (a = t).isIntersecting || 0 < a.intersectionRatio ? $(t.target, t, o, i) : (e = t.target, n = t, a = o, t = i, void (r(e) || (f(e, a.class_exited), U(e, n, a, t), d(a.callback_exit, e, n, t)))); var e, n, a }) } function B(e, n) { var t; tt && !q(e) && (n._observer = new IntersectionObserver(function (t) { H(t, e, n) }, { root: (t = e).container === document ? null : t.container, rootMargin: t.thresholds || t.threshold + "px" })) } function J(t) { return Array.prototype.slice.call(t) } function K(t) { return t.container.querySelectorAll(t.elements_selector) } function Q(t) { return c(t) === ft } function W(t, e) { return e = t || K(e), J(e).filter(r) } function X(e, t) { var n; (n = K(e), J(n).filter(Q)).forEach(function (t) { _(t, e.class_error), i(t) }), t.update() } function t(t, e) { var n, a, t = o(t); this._settings = t, this.loadingCount = 0, B(t, this), n = t, a = this, Y && window.addEventListener("online", function () { X(n, a) }), this.update(e) } var Y = "undefined" != typeof window, Z = Y && !("onscroll" in window) || "undefined" != typeof navigator && /(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent), tt = Y && "IntersectionObserver" in window, et = Y && "classList" in document.createElement("p"), nt = Y && 1 < window.devicePixelRatio, at = { elements_selector: ".lazy", container: Z || Y ? document : null, threshold: 300, thresholds: null, data_src: "src", data_srcset: "srcset", data_sizes: "sizes", data_bg: "bg", data_bg_hidpi: "bg-hidpi", data_bg_multi: "bg-multi", data_bg_multi_hidpi: "bg-multi-hidpi", data_poster: "poster", class_applied: "applied", class_loading: "litespeed-loading", class_loaded: "litespeed-loaded", class_error: "error", class_entered: "entered", class_exited: "exited", unobserve_completed: !0, unobserve_entered: !1, cancel_on_exit: !0, callback_enter: null, callback_exit: null, callback_applied: null, callback_loading: null, callback_loaded: null, callback_error: null, callback_finish: null, callback_cancel: null, use_native: !1 }, ot = "src", it = "srcset", rt = "sizes", ct = "poster", lt = "llOriginalAttrs", st = "loading", ut = "loaded", dt = "applied", ft = "error", _t = "native", gt = "data-", vt = "ll-status", bt = [st, ut, dt, ft], pt = [ot], ht = [ot, ct], mt = [ot, it, rt], Et = { IMG: function (t, e) { h(t, function (t) { y(t, mt), O(t, e) }), y(t, mt), O(t, e) }, IFRAME: function (t, e) { y(t, pt), A(t, ot, l(t, e.data_src)) }, VIDEO: function (t, e) { a(t, function (t) { y(t, pt), A(t, ot, l(t, e.data_src)) }), y(t, ht), A(t, ct, l(t, e.data_poster)), A(t, ot, l(t, e.data_src)), t.load() } }, It = ["IMG", "IFRAME", "VIDEO"], yt = { IMG: j, IFRAME: function (t) { L(t, pt) }, VIDEO: function (t) { a(t, function (t) { L(t, pt) }), L(t, ht), t.load() } }, Lt = ["IMG", "IFRAME", "VIDEO"]; return t.prototype = { update: function (t) { var e, n, a, o = this._settings, i = W(t, o); { if (p(this, i.length), !Z && tt) return q(o) ? (e = o, n = this, i.forEach(function (t) { -1 !== Lt.indexOf(t.tagName) && S(t, e, n) }), void p(n, 0)) : (t = this._observer, o = i, t.disconnect(), a = t, void o.forEach(function (t) { a.observe(t) })); this.loadAll(i) } }, destroy: function () { this._observer && this._observer.disconnect(), K(this._settings).forEach(function (t) { I(t) }), delete this._observer, delete this._settings, delete this.loadingCount, delete this.toLoadCount }, loadAll: function (t) { var e = this, n = this._settings; W(t, n).forEach(function (t) { v(t, e), D(t, n, e) }) }, restoreAll: function () { var e = this._settings; K(e).forEach(function (t) { P(t, e) }) } }, t.load = function (t, e) { e = o(e); D(t, e) }, t.resetStatus = function (t) { i(t) }, t }), function (t, e) { "use strict"; function n() { e.body.classList.add("litespeed_lazyloaded") } function a() { console.log("[LiteSpeed] Start Lazy Load"), o = new LazyLoad(Object.assign({}, t.lazyLoadOptions || {}, { elements_selector: "[data-lazyloaded]", callback_finish: n })), i = function () { o.update() }, t.MutationObserver && new MutationObserver(i).observe(e.documentElement, { childList: !0, subtree: !0, attributes: !0 }) } var o, i; t.addEventListener ? t.addEventListener("load", a, !1) : t.attachEvent("onload", a) }(window, document);</script>
+    <script data-no-optimize="1">window.lazyLoadOptions = Object.assign({}, { threshold: 300 }, window.lazyLoadOptions || {}); !function (t, e) { "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : (t = "undefined" != typeof globalThis ? globalThis : t || self).LazyLoad = e() }(this, function () { "use strict"; function e() { return (e = Object.assign || function (t) { for (var e = 1; e < arguments.length; e++) { var n, a = arguments[e]; for (n in a) Object.prototype.hasOwnProperty.call(a, n) && (t[n] = a[n]) } return t }).apply(this, arguments) } function o(t) { return e({}, at, t) } function l(t, e) { return t.getAttribute(gt + e) } function c(t) { return l(t, vt) } function s(t, e) { return function (t, e, n) { e = gt + e; null !== n ? t.setAttribute(e, n) : t.removeAttribute(e) }(t, vt, e) } function i(t) { return s(t, null), 0 } function r(t) { return null === c(t) } function u(t) { return c(t) === _t } function d(t, e, n, a) { t && (void 0 === a ? void 0 === n ? t(e) : t(e, n) : t(e, n, a)) } function f(t, e) { et ? t.classList.add(e) : t.className += (t.className ? " " : "") + e } function _(t, e) { et ? t.classList.remove(e) : t.className = t.className.replace(new RegExp("(^|\\s+)" + e + "(\\s+|$)"), " ").replace(/^\s+/, "").replace(/\s+$/, "") } function g(t) { return t.llTempImage } function v(t, e) { !e || (e = e._observer) && e.unobserve(t) } function b(t, e) { t && (t.loadingCount += e) } function p(t, e) { t && (t.toLoadCount = e) } function n(t) { for (var e, n = [], a = 0; e = t.children[a]; a += 1)"SOURCE" === e.tagName && n.push(e); return n } function h(t, e) { (t = t.parentNode) && "PICTURE" === t.tagName && n(t).forEach(e) } function a(t, e) { n(t).forEach(e) } function m(t) { return !!t[lt] } function E(t) { return t[lt] } function I(t) { return delete t[lt] } function y(e, t) { var n; m(e) || (n = {}, t.forEach(function (t) { n[t] = e.getAttribute(t) }), e[lt] = n) } function L(a, t) { var o; m(a) && (o = E(a), t.forEach(function (t) { var e, n; e = a, (t = o[n = t]) ? e.setAttribute(n, t) : e.removeAttribute(n) })) } function k(t, e, n) { f(t, e.class_loading), s(t, st), n && (b(n, 1), d(e.callback_loading, t, n)) } function A(t, e, n) { n && t.setAttribute(e, n) } function O(t, e) { A(t, rt, l(t, e.data_sizes)), A(t, it, l(t, e.data_srcset)), A(t, ot, l(t, e.data_src)) } function w(t, e, n) { var a = l(t, e.data_bg_multi), o = l(t, e.data_bg_multi_hidpi); (a = nt && o ? o : a) && (t.style.backgroundImage = a, n = n, f(t = t, (e = e).class_applied), s(t, dt), n && (e.unobserve_completed && v(t, e), d(e.callback_applied, t, n))) } function x(t, e) { !e || 0 < e.loadingCount || 0 < e.toLoadCount || d(t.callback_finish, e) } function M(t, e, n) { t.addEventListener(e, n), t.llEvLisnrs[e] = n } function N(t) { return !!t.llEvLisnrs } function z(t) { if (N(t)) { var e, n, a = t.llEvLisnrs; for (e in a) { var o = a[e]; n = e, o = o, t.removeEventListener(n, o) } delete t.llEvLisnrs } } function C(t, e, n) { var a; delete t.llTempImage, b(n, -1), (a = n) && --a.toLoadCount, _(t, e.class_loading), e.unobserve_completed && v(t, n) } function R(i, r, c) { var l = g(i) || i; N(l) || function (t, e, n) { N(t) || (t.llEvLisnrs = {}); var a = "VIDEO" === t.tagName ? "loadeddata" : "load"; M(t, a, e), M(t, "error", n) }(l, function (t) { var e, n, a, o; n = r, a = c, o = u(e = i), C(e, n, a), f(e, n.class_loaded), s(e, ut), d(n.callback_loaded, e, a), o || x(n, a), z(l) }, function (t) { var e, n, a, o; n = r, a = c, o = u(e = i), C(e, n, a), f(e, n.class_error), s(e, ft), d(n.callback_error, e, a), o || x(n, a), z(l) }) } function T(t, e, n) { var a, o, i, r, c; t.llTempImage = document.createElement("IMG"), R(t, e, n), m(c = t) || (c[lt] = { backgroundImage: c.style.backgroundImage }), i = n, r = l(a = t, (o = e).data_bg), c = l(a, o.data_bg_hidpi), (r = nt && c ? c : r) && (a.style.backgroundImage = 'url("'.concat(r, '")'), g(a).setAttribute(ot, r), k(a, o, i)), w(t, e, n) } function G(t, e, n) { var a; R(t, e, n), a = e, e = n, (t = Et[(n = t).tagName]) && (t(n, a), k(n, a, e)) } function D(t, e, n) { var a; a = t, (-1 < It.indexOf(a.tagName) ? G : T)(t, e, n) } function S(t, e, n) { var a; t.setAttribute("loading", "lazy"), R(t, e, n), a = e, (e = Et[(n = t).tagName]) && e(n, a), s(t, _t) } function V(t) { t.removeAttribute(ot), t.removeAttribute(it), t.removeAttribute(rt) } function j(t) { h(t, function (t) { L(t, mt) }), L(t, mt) } function F(t) { var e; (e = yt[t.tagName]) ? e(t) : m(e = t) && (t = E(e), e.style.backgroundImage = t.backgroundImage) } function P(t, e) { var n; F(t), n = e, r(e = t) || u(e) || (_(e, n.class_entered), _(e, n.class_exited), _(e, n.class_applied), _(e, n.class_loading), _(e, n.class_loaded), _(e, n.class_error)), i(t), I(t) } function U(t, e, n, a) { var o; n.cancel_on_exit && (c(t) !== st || "IMG" === t.tagName && (z(t), h(o = t, function (t) { V(t) }), V(o), j(t), _(t, n.class_loading), b(a, -1), i(t), d(n.callback_cancel, t, e, a))) } function $(t, e, n, a) { var o, i, r = (i = t, 0 <= bt.indexOf(c(i))); s(t, "entered"), f(t, n.class_entered), _(t, n.class_exited), o = t, i = a, n.unobserve_entered && v(o, i), d(n.callback_enter, t, e, a), r || D(t, n, a) } function q(t) { return t.use_native && "loading" in HTMLImageElement.prototype } function H(t, o, i) { t.forEach(function (t) { return (a = t).isIntersecting || 0 < a.intersectionRatio ? $(t.target, t, o, i) : (e = t.target, n = t, a = o, t = i, void (r(e) || (f(e, a.class_exited), U(e, n, a, t), d(a.callback_exit, e, n, t)))); var e, n, a }) } function B(e, n) { var t; tt && !q(e) && (n._observer = new IntersectionObserver(function (t) { H(t, e, n) }, { root: (t = e).container === document ? null : t.container, rootMargin: t.thresholds || t.threshold + "px" })) } function J(t) { return Array.prototype.slice.call(t) } function K(t) { return t.container.querySelectorAll(t.elements_selector) } function Q(t) { return c(t) === ft } function W(t, e) { return e = t || K(e), J(e).filter(r) } function X(e, t) { var n; (n = K(e), J(n).filter(Q)).forEach(function (t) { _(t, e.class_error), i(t) }), t.update() } function t(t, e) { var n, a, t = o(t); this._settings = t, this.loadingCount = 0, B(t, this), n = t, a = this, Y && window.addEventListener("online", function () { X(n, a) }), this.update(e) } var Y = "undefined" != typeof window, Z = Y && !("onscroll" in window) || "undefined" != typeof navigator && /(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent), tt = Y && "IntersectionObserver" in window, et = Y && "classList" in document.createElement("p"), nt = Y && 1 < window.devicePixelRatio, at = { elements_selector: ".lazy", container: Z || Y ? document : null, threshold: 300, thresholds: null, data_src: "src", data_srcset: "srcset", data_sizes: "sizes", data_bg: "bg", data_bg_hidpi: "bg-hidpi", data_bg_multi: "bg-multi", data_bg_multi_hidpi: "bg-multi-hidpi", data_poster: "poster", class_applied: "applied", class_loading: "litespeed-loading", class_loaded: "litespeed-loaded", class_error: "error", class_entered: "entered", class_exited: "exited", unobserve_completed: !0, unobserve_entered: !1, cancel_on_exit: !0, callback_enter: null, callback_exit: null, callback_applied: null, callback_loading: null, callback_loaded: null, callback_error: null, callback_finish: null, callback_cancel: null, use_native: !1 }, ot = "src", it = "srcset", rt = "sizes", ct = "poster", lt = "llOriginalAttrs", st = "loading", ut = "loaded", dt = "applied", ft = "error", _t = "native", gt = "data-", vt = "ll-status", bt = [st, ut, dt, ft], pt = [ot], ht = [ot, ct], mt = [ot, it, rt], Et = { IMG: function (t, e) { h(t, function (t) { y(t, mt), O(t, e) }), y(t, mt), O(t, e) }, IFRAME: function (t, e) { y(t, pt), A(t, ot, l(t, e.data_src)) }, VIDEO: function (t, e) { a(t, function (t) { y(t, pt), A(t, ot, l(t, e.data_src)) }), y(t, ht), A(t, ct, l(t, e.data_poster)), A(t, ot, l(t, e.data_src)), t.load() } }, It = ["IMG", "IFRAME", "VIDEO"], yt = { IMG: j, IFRAME: function (t) { L(t, pt) }, VIDEO: function (t) { a(t, function (t) { L(t, pt) }), L(t, ht), t.load() } }, Lt = ["IMG", "IFRAME", "VIDEO"]; return t.prototype = { update: function (t) { var e, n, a, o = this._settings, i = W(t, o); { if (p(this, i.length), !Z && tt) return q(o) ? (e = o, n = this, i.forEach(function (t) { -1 !== Lt.indexOf(t.tagName) && S(t, e, n) }), void p(n, 0)) : (t = this._observer, o = i, t.disconnect(), a = t, void o.forEach(function (t) { a.observe(t) })); this.loadAll(i) } }, destroy: function () { this._observer && this._observer.disconnect(), K(this._settings).forEach(function (t) { I(t) }), delete this._observer, delete this._settings, delete this.loadingCount, delete this.toLoadCount }, loadAll: function (t) { var e = this, n = this._settings; W(t, n).forEach(function (t) { v(t, e), D(t, n, e) }) }, restoreAll: function () { var e = this._settings; K(e).forEach(function (t) { P(t, e) }) } }, t.load = function (t, e) { e = o(e); D(t, e) }, t.resetStatus = function (t) { i(t) }, t }), function (t, e) { "use strict"; function n() { e.body.classList.add("litespeed_lazyloaded") } function a() { console.log("[LiteSpeed] Start Lazy Load"), o = new LazyLoad(Object.assign({}, t.lazyLoadOptions || {}, { elements_selector: "[data-lazyloaded]", callback_finish: n })), i = function () { o.update() }, t.MutationObserver && new MutationObserver(i).observe(e.documentElement, { childList: !0, subtree: !0, attributes: !0 }) } var o, i; function startLazy() { if ("requestIdleCallback" in t) { t.requestIdleCallback(a, { timeout: 2500 }); } else { setTimeout(a, 800); } } t.addEventListener ? t.addEventListener("load", startLazy, !1) : t.attachEvent("onload", startLazy) }(window, document);</script>
     <script data-no-optimize="1">window.litespeed_ui_events = window.litespeed_ui_events || ["mouseover", "click", "keydown", "wheel", "touchmove", "touchstart"]; var urlCreator = window.URL || window.webkitURL; function litespeed_load_delayed_js_force() { console.log("[LiteSpeed] Start Load JS Delayed"), litespeed_ui_events.forEach(e => { window.removeEventListener(e, litespeed_load_delayed_js_force, { passive: !0 }) }), document.querySelectorAll("iframe[data-litespeed-src]").forEach(e => { e.setAttribute("src", e.getAttribute("data-litespeed-src")) }), "loading" == document.readyState ? window.addEventListener("DOMContentLoaded", litespeed_load_delayed_js) : litespeed_load_delayed_js() } litespeed_ui_events.forEach(e => { window.addEventListener(e, litespeed_load_delayed_js_force, { passive: !0 }) }); async function litespeed_load_delayed_js() { let t = []; for (var d in document.querySelectorAll('script[type="litespeed/javascript"]').forEach(e => { t.push(e) }), t) await new Promise(e => litespeed_load_one(t[d], e)); document.dispatchEvent(new Event("DOMContentLiteSpeedLoaded")), window.dispatchEvent(new Event("DOMContentLiteSpeedLoaded")) } function litespeed_load_one(t, e) { console.log("[LiteSpeed] Load ", t); var d = document.createElement("script"); d.addEventListener("load", e), d.addEventListener("error", e), t.getAttributeNames().forEach(e => { "type" != e && d.setAttribute("data-src" == e ? "src" : e, t.getAttribute(e)) }); let a = !(d.type = "text/javascript"); !d.src && t.textContent && (d.src = litespeed_inline2src(t.textContent), a = !0), t.after(d), t.remove(), a && e() } function litespeed_inline2src(t) { try { var d = urlCreator.createObjectURL(new Blob([t.replace(/^(?:< !-- ) ?(.*?)(?:- ->)?$/gm, "$1")], { type: "text/javascript " })) } catch (e) { d = "data:text/javascript;base64, " + btoa(t.replace(/^(?:< !-- ) ?(.*?)(?:- ->)?$/g, "$1")) } return d }</script>
 </body>
 
