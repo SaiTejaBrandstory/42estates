@@ -93,6 +93,8 @@
             font-family: 'Centrale Sans Regular', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
         }
 
+        /* content-visibility off — can break Fancybox / observers */
+        
         .header-logo-42 {
             padding: 0 0 10px;
         }
@@ -903,6 +905,11 @@
             .form_eyebrow small{
                 font-size: 11px;
             }
+
+            .form_eyebrow small.form-location{
+                font-size: 14px;
+            }
+            
             .banner-enquire-form .txt-20{
                 font-size: 10px;
             }
@@ -923,9 +930,28 @@
             font-size: 12px;
         }
 
+        .form-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 6px 0 0;
+            color: #135B22;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+
+        .form-location svg {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+        }
+
         .form_eyebrow small{
             color: #135B22 !important;
             font-weight: 600!important;
+            letter-spacing: unset!important;
         }
 
         form input::placeholder{
@@ -952,6 +978,14 @@
           width:100px;
          }
         }
+
+        form button{
+            background-color: #135B22!important;
+        }
+
+        .form-group select{
+            font-size: 12px!important;
+        }
     </style>
 </head>
 
@@ -971,7 +1005,7 @@
       <a href="https://42estates.com/" class="banner-42-logo" target="_blank" rel="noopener noreferrer"
                         aria-label="Official 42 Estates">
                         <img src="images/42-estates-official-logo.svg" alt="42 Estates" width="107" height="125"
-                            decoding="async">
+                            decoding="async" fetchpriority="low">
                     </a>
             
             <div class="d-none d-md-flex gap-2 header-actions">
@@ -1014,10 +1048,10 @@
     </div>
     <a class="mobile-whatsapp-fab d-md-none" href="https://wa.me/918880804242" target="_blank" rel="noopener"
         aria-label="Chat on WhatsApp">
-        <img src="images/whtsp-btwgreens-icon.svg" alt="WhatsApp" />
+        <img src="images/whtsp-btwgreens-icon.svg" alt="WhatsApp" width="48" height="48" loading="lazy" decoding="async" />
     </a>
     <a href="/" class="corner-logo d-inline-flex align-items-center">
-        <img src="images/42estates-logo.svg" alt="42 Estates" class="img-fluid" />
+        <img src="images/42estates-logo.svg" alt="42 Estates" class="img-fluid" width="120" height="40" loading="lazy" decoding="async" />
     </a>
     <div class="wrapper">
         <main id="content" class="neve-main">
@@ -1032,8 +1066,8 @@ autofillBrochureInModal1()</script>
                 <picture class="banner-lcp">
                     <source media="(max-width: 767.98px)" srcset="images/btg/btg-banner-mobile.webp" type="image/webp">
                     <source media="(min-width: 768px)" srcset="images/btg/btg-banner-desktop.webp" type="image/webp">
-                    <img src="images/btg/btg-old-redesigned.jpg" alt="Between the Greens villa" width="1920" height="1079"
-                        sizes="100vw" fetchpriority="high" decoding="async">
+                    <img src="images/btg/btg-banner-mobile.webp" alt="Between the Greens villa" width="900" height="1200"
+                        sizes="100vw" fetchpriority="high" loading="eager" decoding="sync">
                 </picture>
                 <div class="container position-relative d-flex justify-content-center align-items-center">
                     <!-- <a href="https://42estates.com/" class="banner-42-logo" target="_blank" rel="noopener noreferrer"
@@ -1054,12 +1088,17 @@ autofillBrochureInModal1()</script>
                             <div class="ps-enquire-form site--form banner-enquire-form p-0">
                                 <div class="p-3 p-md-4">
                                     <div class='form_eyebrow'>
-                                        <small class="text-uppercase"> Luxury 4BHK Villa 4Cr Limited Period Offer</small>
+                                        <small class="form-location">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                            </svg>
+                                            <span>Varthur, off Whitefield, Bangalore</span>
+                                        </small>
                                         <p class="txt-20 mt-2 mb-3">Fill up the form below and we will get in touch with you
                                         </p>
                                     </div>
                                     <form class="single-prj-form banner-prj-form"
-                                        action="https://devopspro.agency/2025/sapphire-villa/submit_api.php"
+                                        action="https://42estates.com/api/between-the-greens"
                                         method="POST"> 
                                         <div class="row">
                                             <div class="col-md-6">
@@ -1129,11 +1168,16 @@ autofillBrochureInModal1()</script>
                     <div class="ps-enquire-form site--form banner-enquire-form p-0">
                         <div class="p-3">
                             <div class="form_eyebrow">
-                                <small class="text-uppercase">Luxury 4BHK Villa 4Cr Limited Period Offer</small>
+                                <small class="form-location">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                    </svg>
+                                    <span>Varthur, off Whitefield, Bangalore</span>
+                                </small>
                                 <p class="txt-20 mt-2 mb-3">Fill up the form below and we will get in touch with you</p>
                             </div>
                             <form class="single-prj-form banner-prj-form-mobile"
-                                action="https://devopspro.agency/2025/sapphire-villa/submit_api.php" method="POST">
+                                action="https://42estates.com/api/between-the-greens" method="POST">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <input type="text" id="mobile_banner_f_name" name="f_name" class="form-control"
@@ -1261,124 +1305,94 @@ autofillBrochureInModal1()</script>
                     <div class="d-flex justify-content-xl-between flex-wrap amenities-row">
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/therapeutic-path.svg" alt="Therapeutic Path"
-                                    class="img-fluid mb-3">
+                                <img src="images/therapeutic-path.svg" alt="Therapeutic Path"
+                                    class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Therapeutic Path</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/community-lawn.svg" alt="Community Lawn" class="img-fluid mb-3">
+                                <img src="images/community-lawn.svg" alt="Community Lawn" class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Community Lawn</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/golf-mini.svg" alt="Golf Mini-Putting" class="img-fluid mb-3">
+                                <img src="images/golf-mini.svg" alt="Golf Mini-Putting" class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Golf Mini-Putting</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/swimming-pool.svg" alt="Swimming Pool" class="img-fluid mb-3">
+                                <img src="images/swimming-pool.svg" alt="Swimming Pool" class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Swimming Pool</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/playcourt.svg" alt="Multi-purpose Play Court"
-                                    class="img-fluid mb-3">
+                                <img src="images/playcourt.svg" alt="Multi-purpose Play Court"
+                                    class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Multi-purpose Play Court</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/walking-trail.svg" alt="Walking Trail" class="img-fluid mb-3">
+                                <img src="images/walking-trail.svg" alt="Walking Trail" class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Walking Trail</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/clubhouse.svg" alt="Clubhouse (Sports & Social)"
-                                    class="img-fluid mb-3">
+                                <img src="images/clubhouse.svg" alt="Clubhouse (Sports & Social)"
+                                    class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Clubhouse (Sports & Social)</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/amphitheatre.svg" alt="Amphitheatre" class="img-fluid mb-3">
+                                <img src="images/amphitheatre.svg" alt="Amphitheatre" class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Amphitheatre</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/swing-pad.svg" alt="Swing Pad" class="img-fluid mb-3">
+                                <img src="images/swing-pad.svg" alt="Swing Pad" class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Swing Pad</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/bonfire.svg" alt="Bonfire Court" class="img-fluid mb-3">
+                                <img src="images/bonfire.svg" alt="Bonfire Court" class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Bonfire Court</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/pet-park.svg" alt="Pet Park" class="img-fluid mb-3">
+                                <img src="images/pet-park.svg" alt="Pet Park" class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Pet Park</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/fragrant-garden.svg" alt="Fragrance Garden" class="img-fluid mb-3">
+                                <img src="images/fragrant-garden.svg" alt="Fragrance Garden" class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Fragrance Garden</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/outdoor-gym.svg" alt="Outdoor Gym" class="img-fluid mb-3">
+                                <img src="images/outdoor-gym.svg" alt="Outdoor Gym" class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Outdoor Gym</p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/toddler-zone.svg" alt="Toddler Play Area  " class="img-fluid mb-3">
+                                <img src="images/toddler-zone.svg" alt="Toddler Play Area  " class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Toddler Play Area </p>
                             </div>
                         </div>
                         <div class="cols">
                             <div class="amenities-icon-box">
-                                <img data-lazyloaded="1"
-                                    src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                    data-src="images/indoor-games.svg" alt="Indoor Games" class="img-fluid mb-3">
+                                <img src="images/indoor-games.svg" alt="Indoor Games" class="img-fluid mb-3" loading="lazy" decoding="async">
                                 <p class="mb-0 fw-normal">Indoor Games</p>
                             </div>
                         </div>
@@ -1410,9 +1424,7 @@ autofillBrochureInModal1()</script>
                                 <div class="col-4 ps-pg-col2">
                                     <div class="ps-pg-item">
                                         <a href="images/villa-view-3-lb.webp" data-fancybox="gallery">
-                                            <img data-lazyloaded="1"
-                                                src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                                data-src="images/villa-view-3-s-opt.webp" class="img-fluid" alt="img">
+                                            <img src="images/villa-view-3-s-opt.webp" class="img-fluid" alt="img" loading="lazy" decoding="async">
                                             <div class="ps-pg-item-text">Outdoors</div>
                                             <div class="overlay">
                                                 <span class="plus-symbol">+</span>
@@ -1423,9 +1435,7 @@ autofillBrochureInModal1()</script>
                                 <div class="col-4 ps-pg-col1">
                                     <div class="ps-pg-item">
                                         <a href="images/clubhouse-lb.webp" data-fancybox="gallery">
-                                            <img data-lazyloaded="1"
-                                                src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                                data-src="images/clubhouse-opt.webp" class="img-fluid" alt="img">
+                                            <img src="images/clubhouse-opt.webp" class="img-fluid" alt="img" loading="lazy" decoding="async">
                                             <div class="ps-pg-item-text">Club House</div>
                                             <div class="overlay">
                                                 <span class="plus-symbol">+</span>
@@ -1434,9 +1444,7 @@ autofillBrochureInModal1()</script>
                                     </div>
                                     <div class="ps-pg-item">
                                         <a href="images/aerial-view-lb.webp" data-fancybox="gallery">
-                                            <img data-lazyloaded="1"
-                                                src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                                data-src="images/aerial-view-s-opt.webp" class="img-fluid" alt="img">
+                                            <img src="images/aerial-view-s-opt.webp" class="img-fluid" alt="img" loading="lazy" decoding="async">
                                             <div class="ps-pg-item-text">Aerial</div>
                                             <div class="overlay">
                                                 <span class="plus-symbol">+</span>
@@ -1447,9 +1455,7 @@ autofillBrochureInModal1()</script>
                                 <div class="col-4 ps-pg-col3">
                                     <div class="ps-pg-item">
                                         <a href="images/top-view-lb.webp" data-fancybox="gallery">
-                                            <img data-lazyloaded="1"
-                                                src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                                data-src="images/top-view-s-opt.webp" class="img-fluid" alt="img">
+                                            <img src="images/top-view-s-opt.webp" class="img-fluid" alt="img" loading="lazy" decoding="async">
                                             <div class="ps-pg-item-text">Amenities</div>
                                             <div class="overlay">
                                                 <span class="plus-symbol">+</span>
@@ -1475,9 +1481,7 @@ autofillBrochureInModal1()</script>
                                 <div class="col-4 ps-pg-col2">
                                     <div class="ps-pg-item">
                                         <a href="images/dining-room-lb.webp" data-fancybox="gallery1">
-                                            <img data-lazyloaded="1"
-                                                src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                                data-src="images/dining-room-s-opt.webp" class="img-fluid" alt="img">
+                                            <img src="images/dining-room-s-opt.webp" class="img-fluid" alt="img" loading="lazy" decoding="async">
                                             <div class="ps-pg-item-text">Dining Room</div>
                                             <div class="overlay">
                                                 <span class="plus-symbol">+</span>
@@ -1488,9 +1492,7 @@ autofillBrochureInModal1()</script>
                                 <div class="col-4 ps-pg-col1">
                                     <div class="ps-pg-item">
                                         <a href="images/kitchen-lb.webp" data-fancybox="gallery1">
-                                            <img data-lazyloaded="1"
-                                                src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                                data-src="images/kitchen-opt.webp" class="img-fluid" alt="img">
+                                            <img src="images/kitchen-opt.webp" class="img-fluid" alt="img" loading="lazy" decoding="async">
                                             <div class="ps-pg-item-text">Kitchen</div>
                                             <div class="overlay">
                                                 <span class="plus-symbol">+</span>
@@ -1499,9 +1501,7 @@ autofillBrochureInModal1()</script>
                                     </div>
                                     <div class="ps-pg-item">
                                         <a href="images/bedroom-lb.webp" data-fancybox="gallery1">
-                                            <img data-lazyloaded="1"
-                                                src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                                data-src="images/bedroom-s-opt.webp" class="img-fluid" alt="img">
+                                            <img src="images/bedroom-s-opt.webp" class="img-fluid" alt="img" loading="lazy" decoding="async">
                                             <div class="ps-pg-item-text">Bed Room</div>
                                             <div class="overlay">
                                                 <span class="plus-symbol">+</span>
@@ -1513,7 +1513,7 @@ autofillBrochureInModal1()</script>
                                     <div class="ps-pg-item">
                                         <a href="images/livingroom-lb.webp" data-fancybox="gallery1">
                                             <img data-lazyloaded="1"
-                                                src="images/livingroom-s-opt.webp" class="img-fluid" alt="img">
+                                                src="images/livingroom-s-opt.webp" class="img-fluid" alt="img" loading="lazy" decoding="async">
                                             <div class="ps-pg-item-text">Living Room</div>
                                             <div class="overlay">
                                                 <span class="plus-symbol">+</span>
@@ -1542,10 +1542,8 @@ autofillBrochureInModal1()</script>
                                 <a href="images/construction-gallery/new-construction-img1.webp"
                                     data-fancybox="construction-gallery" data-caption="">
                                     <div class="image-wrapper">
-                                        <img data-lazyloaded="1"
-                                            src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                            data-src="images/construction-gallery/new-construction-img1.webp"
-                                            class="img-fluid" alt="">
+                                        <img src="images/construction-gallery/new-construction-img1.webp"
+                                            class="img-fluid" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="ps-pg-item-text"></div>
                                     <div class="overlay">
@@ -1559,10 +1557,8 @@ autofillBrochureInModal1()</script>
                                 <a href="images/construction-gallery/new-construction-img2.webp"
                                     data-fancybox="construction-gallery" data-caption="">
                                     <div class="image-wrapper">
-                                        <img data-lazyloaded="1"
-                                            src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                            data-src="images/construction-gallery/new-construction-img2.webp"
-                                            class="img-fluid" alt="">
+                                        <img src="images/construction-gallery/new-construction-img2.webp"
+                                            class="img-fluid" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="ps-pg-item-text"></div>
                                     <div class="overlay">
@@ -1576,10 +1572,8 @@ autofillBrochureInModal1()</script>
                                 <a href="images/construction-gallery/new-construction-img3.webp"
                                     data-fancybox="construction-gallery" data-caption="">
                                     <div class="image-wrapper">
-                                        <img data-lazyloaded="1"
-                                            src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                                            data-src="images/construction-gallery/new-construction-img3.webp"
-                                            class="img-fluid" alt="">
+                                        <img src="images/construction-gallery/new-construction-img3.webp"
+                                            class="img-fluid" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="ps-pg-item-text"></div>
                                     <div class="overlay">
@@ -1646,11 +1640,16 @@ autofillBrochureInModal1()</script>
                         <div class="col-lg-5 mt-3 mt-lg-0">
                             <div class="ps-enquire-form site--form">
                                 <div class="form_eyebrow">
-                                    <small class="text-uppercase">Luxury 4BHK Villa 4Cr Limited Period Offer</small>
+                                    <small class="form-location">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                        </svg>
+                                        <span>Varthur, off Whitefield, Bangalore</span>
+                                    </small>
                                     <p class="txt-20 mt-2">Fill up the form below and we will get in touch with you</p>
                                 </div>
                                 <form class="single-prj-form"
-                                    action="https://devopspro.agency/2025/sapphire-villa/submit_api.php" method="POST">
+                                    action="https://42estates.com/api/between-the-greens" method="POST">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <input type="text" id="f_name" name="f_name" class="form-control"
@@ -1939,9 +1938,15 @@ autofillBrochureInModal1()</script>
                                 width="100%" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
-                        <div class="col-12 text-center mt-4">
+                        <!-- <div class="col-12 text-center mt-4">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#leadModal"
                                 class="btn bg-black text-white text-uppercase get-directions-btn">
+                                Get Directions
+                            </a>
+                        </div> -->
+                        <div class="col-12 text-center mt-4">
+                            <a href="https://maps.app.goo.gl/hqFA4HdBjFgJwZa29"
+                                class="btn bg-black text-white text-uppercase get-directions-btn" target="_blank">
                                 Get Directions
                             </a>
                         </div>
@@ -1968,7 +1973,11 @@ autofillBrochureInModal1()</script>
 
                             <div class="ps-enquire-form site--form">
                                 <div class="form_eyebrow">
-                                    <small class="text-uppercase">Luxury 4BHK Villa 4Cr Limited Period Offer
+                                    <small class="form-location">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                        </svg>
+                                        <span>Varthur, off Whitefield, Bangalore</span>
                                     </small>
                                     <p class="txt-20 mt-2">Fill up the form below and we will get in touch with you</p>
                                 </div>
@@ -1984,7 +1993,7 @@ autofillBrochureInModal1()</script>
                                     </div>
                                 </div>
                                 <form class="single-prj-form"
-                                    action="https://devopspro.agency/2025/sapphire-villa/submit_api.php" method="POST">
+                                    action="https://42estates.com/api/between-the-greens" method="POST">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <input type="text" id="f_name_auto" name="f_name" class="form-control"
@@ -2061,10 +2070,10 @@ autofillBrochureInModal1()</script>
                                 </div>
                                 <div class="row pb-3">
                                     <div class="col-6">
-                                        <img class="img-fluid rounded" src="/images/btg-img1.png" alt="Logo">
+                                        <img class="img-fluid rounded" src="/images/btg-img1.png" alt="Logo" loading="lazy" decoding="async" width="200" height="100">
                                     </div>
                                     <div class="col-6">
-                                        <img class="img-fluid rounded" src="/images/btg-img2.png" alt="Logo">
+                                        <img class="img-fluid rounded" src="/images/btg-img2.png" alt="Logo" loading="lazy" decoding="async" width="200" height="100">
                                     </div>
                                 </div>
                                 <style>
@@ -2107,7 +2116,7 @@ autofillBrochureInModal1()</script>
                                 <div class="row">
                                     <div class="col-12">
                                         <form class="single-prj-form"
-                                            action="https://devopspro.agency/2025/sapphire-villa/submit_api.php"
+                                            action="https://42estates.com/api/between-the-greens"
                                             method="POST">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -2363,16 +2372,54 @@ document.addEventListener('DOMContentLiteSpeedLoaded',autofillInterestedProperty
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script
         type="speculationrules">{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/neve-child\/*","\/wp-content\/themes\/neve\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}</script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-    </noscript>
-    <script type="litespeed/javascript"
-        data-src="https://www.adarshdevelopers.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
-    <script type="litespeed/javascript"
-        data-src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+    <style>
+        /* Keep lightbox above sticky CTAs / overlays */
+        .fancybox-container {
+            z-index: 100000 !important;
+        }
+        body.fancybox-active .mobile-cta-bar,
+        body.fancybox-active .mobile-whatsapp-fab,
+        body.fancybox-active .corner-logo {
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script>
+        (function ($) {
+            if (!$ || !$.fn.fancybox) return;
+
+            function unlockPage() {
+                $('body').removeClass('fancybox-active compensate-for-scrollbar');
+                $('html, body').css({ overflow: '', 'margin-right': '' });
+            }
+
+            var common = {
+                loop: true,
+                hash: false,
+                backFocus: false,
+                trapFocus: true,
+                buttons: ['zoom', 'fullScreen', 'slideShow', 'thumbs', 'close'],
+                protect: true,
+                afterShow: function () {
+                    $('body').addClass('fancybox-active');
+                },
+                afterClose: unlockPage
+            };
+
+            // Bind by group (not .each) — required for Fancybox 3 galleries
+            $('[data-fancybox="gallery"]').fancybox(common);
+            $('[data-fancybox="gallery1"]').fancybox(common);
+            $('[data-fancybox="construction-gallery"]').fancybox($.extend({}, common, {
+                baseClass: 'construction-gallery-custom'
+            }));
+            $('[data-fancybox="construction-gallery2"]').fancybox($.extend({}, common, {
+                baseClass: 'construction-gallery-custom'
+            }));
+        })(window.jQuery);
+    </script>
     <script type="litespeed/javascript">function autofillInterestedProperty(){var pageHeading=document.querySelector('h1.prj-name').textContent.trim();var interestedField=document.querySelector('.single-prj-form .s-prj[name="project"]');if(interestedField){interestedField.value=pageHeading}}
 document.addEventListener('DOMContentLiteSpeedLoaded',autofillInterestedProperty)</script>
     <script type="litespeed/javascript">function autofillPropertyInModal(){var floorPlanModal=document.querySelector('.floor-modal');if(floorPlanModal){floorPlanModal.addEventListener('shown.bs.modal',function(){var pageHeading1=document.querySelector('h1.prj-name')?document.querySelector('h1.prj-name').innerHTML:'Enter Property Name';var interestedField1=document.querySelector('.fp-prj[name="project"]');if(interestedField1){interestedField1.value=pageHeading1}})}}
@@ -2422,18 +2469,13 @@ autofillPropertyInModal();masterPropertyInModal()</script>
                     submitBtn.disabled = true;
                     submitBtn.textContent = 'Submitting...';
                     
-                    // Submit form data
-                    fetch('https://devopspro.agency/2025/sapphire-villa/submit_api.php', {
+                    // no-cors: API accepts POST but blocks reading response cross-origin
+                    fetch('https://42estates.com/api/between-the-greens', {
                         method: 'POST',
-                        body: formData
+                        body: formData,
+                        mode: 'no-cors'
                     })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
+                    .then(function () {
                         // Trigger download on successful submission
                         const link = document.createElement('a');
                         link.href = fileUrl;
@@ -2455,9 +2497,7 @@ autofillPropertyInModal();masterPropertyInModal()</script>
                         // Reset form
                         masterPlanForm.reset();
                         
-                        // Re-enable submit button
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = originalBtnText;
+                        window.location.href = 'thank-you.html';
                     })
                     .catch(error => {
                         console.error('Error:', error);
@@ -2512,18 +2552,13 @@ autofillPropertyInModal();masterPropertyInModal()</script>
                     submitBtn.disabled = true;
                     submitBtn.textContent = 'Submitting...';
                     
-                    // Submit form data
-                    fetch('https://devopspro.agency/2025/sapphire-villa/submit_api.php', {
+                    // no-cors: API accepts POST but blocks reading response cross-origin
+                    fetch('https://42estates.com/api/between-the-greens', {
                         method: 'POST',
-                        body: formData
+                        body: formData,
+                        mode: 'no-cors'
                     })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
+                    .then(function () {
                         // Trigger download on successful submission
                         const link = document.createElement('a');
                         link.href = fileUrl;
@@ -2545,9 +2580,7 @@ autofillPropertyInModal();masterPropertyInModal()</script>
                         // Reset form
                         floorPlanForm.reset();
                         
-                        // Re-enable submit button
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = originalBtnText;
+                        window.location.href = 'thank-you.html';
                     })
                     .catch(error => {
                         console.error('Error:', error);
@@ -2571,11 +2604,52 @@ autofillPropertyInModal();masterPropertyInModal()</script>
         // Also initialize when LiteSpeed loads
         document.addEventListener('DOMContentLiteSpeedLoaded', initPlanModals);
     </script>
-    <script
-        type="litespeed/javascript">$(document).ready(function(){const gallerySettings={loop:!0,buttons:["zoom","fullScreen","slideShow","thumbs","close"],protect:!0,beforeShow:function(instance,current){let galleryClass;const galleryType=instance.$trigger.data('fancybox');if(galleryType==='gallery'){galleryClass='.hidden-gallery-item'}else if(galleryType==='construction-gallery'){galleryClass='.hidden-cgallery-item'}else if(galleryType==='construction-gallery2'){galleryClass='.hidden-cgallery-item2'}
-if(galleryClass){$(galleryClass).css('display','block')}}};$('[data-fancybox]').each(function(){const galleryType=$(this).data('fancybox');if(galleryType==='gallery'||galleryType==='construction-gallery'||galleryType==='construction-gallery2'){$(this).fancybox(gallerySettings)}})})</script>
-    <script
-        type="litespeed/javascript">jQuery("[data-fancybox='construction-gallery'], [data-fancybox='construction-gallery2']").fancybox({baseClass:"construction-gallery-custom"})</script>
+    <script type="litespeed/javascript">
+        function initEnquiryThankYouRedirect() {
+            var thankYouUrl = 'thank-you.html';
+            document.querySelectorAll('form[action*="between-the-greens"]').forEach(function (form) {
+                if (form.dataset.thankYouBound === '1') return;
+                form.dataset.thankYouBound = '1';
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    if (!form.checkValidity()) {
+                        form.reportValidity();
+                        return;
+                    }
+                    var submitBtn = form.querySelector('button[type="submit"]');
+                    var originalBtnText = submitBtn ? submitBtn.textContent : '';
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Submitting...';
+                    }
+                    // no-cors: lead still posts; browser cannot read cross-origin response
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        mode: 'no-cors'
+                    })
+                    .then(function () {
+                        window.location.href = thankYouUrl;
+                    })
+                    .catch(function (error) {
+                        console.error('Error:', error);
+                        alert('There was an error submitting the form. Please try again.');
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalBtnText;
+                        }
+                    });
+                });
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initEnquiryThankYouRedirect);
+        } else {
+            initEnquiryThankYouRedirect();
+        }
+        document.addEventListener('DOMContentLiteSpeedLoaded', initEnquiryThankYouRedirect);
+    </script>
+    <!-- Fancybox loaded above with jquery -->
     <!-- <script src="https://backend.livhousing.com/bot/create-script-tag?token=63cc37b3-fb67-492d-b855-99db9796ff65"
         type="application/javascript"></script> -->
 
