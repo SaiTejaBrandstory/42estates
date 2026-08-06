@@ -2132,7 +2132,7 @@ autofillBrochureInModal1()</script>
                                                         title="Please enter a valid email address"
                                                         oninput="this.value=this.value.replace(/\s/g,'')">
                                                 </div>
-                                                <div class="col-md-12 mb-3">
+                                                <div class="col-md-6 mb-3">
                                                     <input type="tel" id="lead_phonefax" name="phonefax"
                                                         class="form-control" placeholder="Phone Number*" required
                                                         maxlength="10" minlength="10" pattern="[0-9]{10}"
@@ -2429,11 +2429,15 @@ autofillPropertyInModal();masterPropertyInModal()</script>
                     submitBtn.disabled = true;
                     submitBtn.textContent = 'Submitting...';
                     
-                    // no-cors: API accepts POST but blocks reading response cross-origin
                     fetch('https://42estates.com/api/between-the-greens', {
                         method: 'POST',
-                        body: formData,
-                        mode: 'no-cors'
+                        body: formData
+                    })
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json().catch(function () { return null; });
                     })
                     .then(function () {
                         // Trigger download on successful submission
@@ -2512,11 +2516,15 @@ autofillPropertyInModal();masterPropertyInModal()</script>
                     submitBtn.disabled = true;
                     submitBtn.textContent = 'Submitting...';
                     
-                    // no-cors: API accepts POST but blocks reading response cross-origin
                     fetch('https://42estates.com/api/between-the-greens', {
                         method: 'POST',
-                        body: formData,
-                        mode: 'no-cors'
+                        body: formData
+                    })
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json().catch(function () { return null; });
                     })
                     .then(function () {
                         // Trigger download on successful submission
@@ -2582,11 +2590,15 @@ autofillPropertyInModal();masterPropertyInModal()</script>
                         submitBtn.disabled = true;
                         submitBtn.textContent = 'Submitting...';
                     }
-                    // no-cors: lead still posts; browser cannot read cross-origin response
                     fetch(form.action, {
                         method: 'POST',
-                        body: new FormData(form),
-                        mode: 'no-cors'
+                        body: new FormData(form)
+                    })
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json().catch(function () { return null; });
                     })
                     .then(function () {
                         window.location.href = thankYouUrl;
